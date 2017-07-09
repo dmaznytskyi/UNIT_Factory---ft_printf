@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 19:18:12 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/08 15:34:10 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:53:03 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@
 
 void	find_biggest(t_ftprintf *st, char *s)
 {
-	
+	if (ft_strstr(s, "z"))
+		st->sm = 1;
+	if (ft_strstr(s, "j"))
+		st->sm = 2;
+	if (ft_strstr(s, "ll"))
+		st->sm = 3;
+	if (ft_strstr(s, "l"))
+		st->sm = 4;
+	if (ft_strstr(s, "h"))
+		st->sm = 5;
+	if (ft_strstr(s, "hh"))
+		st->sm = 6;
 }
 
 void	ft_psm(t_ftprintf *s)
@@ -31,11 +42,9 @@ void	ft_psm(t_ftprintf *s)
 			i++;
 		tmp = ft_strsub(s->output, 0, i);
 		s->output += i;
+		s->f_start += i;
 		if (s->output == '\0')
 			free(s->output);
-		if (ft_strlen(tmp) > 2 || tmp[0] != tmp[1])
-			find_biggest(s, tmp);
-		else
-			s->sm = 'l';
+		find_biggest(s, tmp);
 	}
 }
