@@ -6,13 +6,11 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 19:18:12 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/09 14:53:03 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 15:06:07 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-//TODO дописать выбор самого большого флага (лонг итд)
 
 void	find_biggest(t_ftprintf *st, char *s)
 {

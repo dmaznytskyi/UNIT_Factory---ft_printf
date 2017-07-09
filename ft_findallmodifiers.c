@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 13:10:47 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/08 15:11:25 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:57:07 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	ft_findallmodifiers(const char *r, t_ftprintf *s, int i)
 		printf("fw [%d] output [%s]\n", s->fw, s->output);
 		ft_pprec(s);
 		printf("prec [%d] output [%s]\n", s->prec, s->output);
+		ft_psm(s);
+		printf("sm [%d] output [%s]\n", s->sm, s->output);
 	}
 }
