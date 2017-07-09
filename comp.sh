@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/17 15:02:22 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/09 16:48:25 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/09 18:27:39 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,5 +27,5 @@ do
 	\nOutput: \n[\033[1m"
 	./ft_printf
 	echo "\033[0m]\033[1;32m\nSCRIPT DONE\033[0m"
-	sleep 60
+	sleep 10
 done

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/07 18:33:29 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:37:29 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int main()
 {
-	ft_printf("lol kek cheburek\n %+012.0000010d\n", 10);
+	ft_printf("lol kek cheburek %+012.1d\n", 10);
 	return (0);
 }

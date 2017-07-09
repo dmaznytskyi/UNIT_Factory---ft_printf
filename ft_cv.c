@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 10:13:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/09 15:35:13 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:53:56 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_cv(char a, t_ftprintf *st)
 		i++;
 	if (i == 14)
 	{
-		if (a == 'h' || a == 'l' || a == 'j' || a == 'z')
+		if (a != 'h' || a != 'l' || a != 'j' || a != 'z')
 			return (0);
 		else
 		{

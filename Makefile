@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/09 15:02:08 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/09 21:29:28 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ OBJ = libft/ft_memccpy.o libft/ft_memmove.o libft/ft_strcpy.o\
 	  libft/ft_lstadd.o libft/ft_lstiter.o libft/ft_lstmap.o\
 	  \
 	  ft_printf.o ft_putstr_until.o ft_cv.o ft_ns.o ft_pf.o ft_pfw.o\
-	  ft_pprec.o ft_findallmodifiers.o ft_psm.o
+	  ft_pprec.o ft_findallmodifiers.o ft_psm.o	printf_info.o
 
 all: $(NAME)
 

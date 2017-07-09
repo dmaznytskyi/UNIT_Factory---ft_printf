@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 18:11:10 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/08 15:09:59 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:17:53 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,4 @@ void	ft_pprec(t_ftprintf *s)
 		s->output += i;
 		s->f_start += i;
 	}
-	else
-		printf("No precision found\n");
 }
