@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/11 14:51:28 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/11 15:58:01 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 
 typedef struct	s_ftprintf
 {
-	int		f_start;	//% format start index
-	int		f_end;		//% format end index
+	size_t	f_start;	//% format start index
+	size_t	f_end;		//% format end index
 	char	flags[5];	//flags in a char arr
-	int		fw;			//field width
-	int		prec;		//precision
+	size_t	fw;			//field width
+	size_t	prec;		//precision
 	char	sm;			//size modifier
 	char	*output;	//string goto stdout
 	char	cl;			//conversion letter
