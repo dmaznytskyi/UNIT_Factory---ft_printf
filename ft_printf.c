@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/03 13:51:15 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/11 14:50:45 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/13 23:00:16 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list		p;
-	int			i;
-	long		count_letters;
+	size_t		i;
+	size_t		count_letters;
 	t_ftprintf	s;
 
 	i = 0;

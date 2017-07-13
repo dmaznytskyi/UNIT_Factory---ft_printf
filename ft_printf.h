@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/11 15:58:01 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/13 23:00:18 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void		ft_pf(t_ftprintf *s, int cf);
 void		ft_pfw(t_ftprintf *s);
 void		ft_pprec(t_ftprintf *s);
 void		ft_psm(t_ftprintf *s);
-void		ft_findallmodifiers(const char *r, t_ftprintf *s, int *i);
-void		ft_writeout(t_ftprintf s, long *col);
+void		ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i);
+void		ft_writeout(t_ftprintf s, size_t *col);
+size_t		ft_putanynbr(size_t num);
 t_ftprintf	ft_ns(void *arg);
 
 void		printf_info(t_ftprintf *s);		/////////////////////////

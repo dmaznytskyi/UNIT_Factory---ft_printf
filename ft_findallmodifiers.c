@@ -6,13 +6,13 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 13:10:47 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/11 14:42:26 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/13 19:11:57 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_findallmodifiers(const char *r, t_ftprintf *s, int *i)
+void	ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i)
 {
 	s->f_start = *i;
 	while (!ft_cv(r[*i], s))
