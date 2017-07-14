@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/13 23:00:18 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/14 18:45:38 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,25 @@ void		ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i);
 void		ft_writeout(t_ftprintf s, size_t *col);
 size_t		ft_putanynbr(size_t num);
 t_ftprintf	ft_ns(void *arg);
+
+/*
+** функции - конвершн леттеры
+*/
+
+void		ft_s_small(t_ftprintf s, size_t *col);
+void		ft_s_big(t_ftprintf s, size_t *col);
+void		ft_p_small(t_ftprintf s, size_t *col);
+void		ft_d_small(t_ftprintf s, size_t *col);
+void		ft_d_big(t_ftprintf s, size_t *col);
+void		ft_i_small(t_ftprintf s, size_t *col);
+void		ft_o_small(t_ftprintf s, size_t *col);
+void		ft_o_big(t_ftprintf s, size_t *col);
+void		ft_u_small(t_ftprintf s, size_t *col);
+void		ft_u_big(t_ftprintf s, size_t *col);
+void		ft_x_small(t_ftprintf s, size_t *col);
+void		ft_x_big(t_ftprintf s, size_t *col);
+void		ft_c_small(t_ftprintf s, size_t *col);
+void		ft_c_big(t_ftprintf s, size_t *col);
 
 void		printf_info(t_ftprintf *s);		/////////////////////////
 
