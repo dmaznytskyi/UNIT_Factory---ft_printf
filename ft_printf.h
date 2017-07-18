@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/17 16:29:03 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/18 20:54:01 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_ftprintf
 int			ft_printf(const char *format, ...);
 int			ft_putstr_until(char const *s, size_t end);
 int			ft_cv(char a, t_ftprintf *st);
+char		*ft_itoa_base(int value, int base);
 void		ft_pf(t_ftprintf *s, int cf);
 void		ft_pfw(t_ftprintf *s);
 void		ft_pprec(t_ftprintf *s);
