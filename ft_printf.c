@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/03 13:51:15 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/14 19:01:58 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/17 16:28:30 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 				i++;
 				s = ft_ns(va_arg(p, void*));
 				ft_findallmodifiers(format, &s, &i);
-				ft_writeout(s, &count_letters);
+				ft_writeout(&s, &count_letters);
 			}
 			else
 			{

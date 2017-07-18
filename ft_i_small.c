@@ -6,13 +6,13 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:12:59 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/14 21:13:15 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/17 16:35:12 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_i_small(t_ftprintf s, size_t *col)
+void	ft_i_small(t_ftprintf *s, size_t *col)
 {
 		(void)s;
 		(void)col;

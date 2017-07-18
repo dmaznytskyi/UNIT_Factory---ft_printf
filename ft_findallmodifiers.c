@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 13:10:47 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/14 19:01:53 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/17 17:13:42 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i)
 		ft_pprec(s);
 		ft_psm(s);
 	}
-		printf_info(s);
+//	printf_info(s);
 }

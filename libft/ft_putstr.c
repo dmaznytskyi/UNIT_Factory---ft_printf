@@ -6,19 +6,20 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 14:36:00 by dmaznyts          #+#    #+#             */
-/*   Updated: 2016/11/29 14:36:01 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/17 16:30:26 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+size_t	ft_putstr(char const *s)
 {
 	size_t	i;
 
 	i = -1;
 	if (!s)
-		return ;
+		return 0;
 	while (s[++i])
 		write(1, &s[i], 1);
+	return (i);
 }
