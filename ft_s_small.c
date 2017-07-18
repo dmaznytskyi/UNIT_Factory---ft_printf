@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/17 17:02:33 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/18 18:48:36 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	ft_wsf(t_ftprintf *s)
 	tmp = (char*)malloc(sizeof(char) * s->fw);
 	while (i < (s->fw - ft_strlen((char*)s->arg)))
 	{
-		tmp[i] = ' ';
+		s->flags[1] ? (tmp[i] = '0') :
+			(tmp[i] = ' ');
 		i++;
 	}
 	tmp[i] = '\0';
