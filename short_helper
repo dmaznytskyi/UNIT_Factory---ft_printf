@@ -1,0 +1,67 @@
+[%s] [%S] [%p] [%d] [%D] [%i] [%o] [%O] [%u] [%U] [%x] [%X] [%c] [%C]
+
+[%d] = [%i]		- type (int) (((int)-2147483648) - (2147483647))
+[%u]			- type (unsigned) ((0) - (4294967295))
+[%o]			- type (unsigned) ((0) - (4294967295))
+	[in 8 base] ((0) - (37777777777))
+[%x] && [%X]	- type (unsigned) ((0) - (4294967295))
+	[in 16 base] ((0) - (ffffffff) || (FFFFFFFF))
+[%c]			- type (char) ((-128) - (127))
+[%s]			- type (char*)
+[%p]			- type (void*) cast to (long) print in 16 base.
+[%D] = [%ld]	- type (long) ((-9223372036854775808) - (9223372036854775807))
+[%O] = [%lo]	- type (unsigned long) ((0) - (18446744073709551615U))
+	[in 8 base] ((0) - (1777777777777777777777))
+[%U] = [%lu]	- type (unsigned long) ((0) - (18446744073709551615U))
+[%C] = [%lc]	- type (char) same as %c
+[%S] = [%ls]	- type (wchar_t*)
+
+placed after (%) and before (d)||(c)...
+	[hh] + [%d/i] - type (char) ((-128) - (127))
+	[hh] + [%o]||[%u]||[%x/X] - type (unsigned char) ((0) - (255))
+	[h]  + [%d/i] - type (short) ((-32768) - (32767))
+	[h]  + [%o]||[%u]||[%x/X] - type (unsigned short) ((0) - (65535))
+	[l] + [%d/i] - type (long) ((-9223372036854775808) - (9223372036854775807))
+	[l] + [%u]||[%o]||[%x/X] - type (unsigned long) ((0) - (18446744073709551615U))
+		[in 8 base] ((0) - (1777777777777777777777))
+		[in 16 base] ((0) - (ffffffff) || (FFFFFFFF))
+	[ll] + [%d/i] - type (long long) ((-9223372036854775808) - (9223372036854775807))
+	[ll] + [%u]||[%o]||[%x/X] - type (unsigned long) ((0) - (18446744073709551615U))
+		[in 8 base] ((0) - (1777777777777777777777))
+		[in 16 base] ((0) - (ffffffff) || (FFFFFFFF))
+	[j] + [%d/i] - type (intmax_t) ((-9223372036854775808) - (9223372036854775807))
+	[j] + [%u]||[%o]||[%x/X] - type (uintmax_t) ((0) - (18446744073709551615U))
+	[z] + [%d/i] - type (size_t)((-9223372036854775808) - (9223372036854775807))
+	[z] + [%u]||[%o]||[%x/X] - type (size_t) ((0) - (18446744073709551615U))
+
+[-] - put value to the left. [0] is ignored when [-] presented.
+
+[#] - work only with [%o][%x/X]. with [%o] - put '0' before value.
+	with [%x/X] put "0x"/"0X" before value.
+	if [0] present, put '0'||"0x" before '0's
+
+[0] - put '0's instead of space(s) ' ' before value, or between "0x" and value if [%p]
+
+[+] - work only with [%d/i]. put sign '+' if positive or '-' if negative, before value.
+if [0] present, put sign before '0's. space [ ] ignored, if [+] present
+
+[ ] - put ' ' before value.
+
+[%(char)] - puts any (char)(exception see below), it works with [0],[-] and [number] flags.
+	exception: 0,27,32,35,36,39,42-46,48-59,65,67,68,69,70,71,76,79,83,85,
+	88,95,97,99,100,101,102,103,104,105,106,108,110,111,112,113,115,
+	116,117,118,120,122
+
+[number] - put exact (number) of spaces ' ' before value. number = ((1) - (2147483647))
+	if (number) <= output number of argument chars, doesn't put space
+if ((number + return value of printf counted before) > 2147483647)
+	print: '\0', return (-1);
+if ((number + return value of printf counted before) = 2147483647)
+	&& there's something after, than print:
+all before value, value, but nothing after value, return(2147483647)
+
+the precision [.] - if (value length < number) put amount (number after '.')
+	of '0's before value. Don't work with [%c] and [%p]
+	if [%s] put number of chars from array.
+	[0] is ignored when [.] presented.
+
