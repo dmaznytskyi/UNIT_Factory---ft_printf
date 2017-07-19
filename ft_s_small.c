@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/19 18:28:36 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/19 19:38:32 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ static void	ft_wsf(t_ftprintf *s)
 
 void		ft_s_small(t_ftprintf *s, size_t *col)
 {
+	if (!(char*)s->arg)
+	{
+		s->prec > 0 ? (*col += ft_putstr_until("(null)", s->prec)) :
+			(*col += ft_putstr("(null)"));
+		return ;
+	}
 	if (s->fw == 0 || ft_strlen((char*)s->arg) > s->fw)
 		*col += ft_putstr((char*)s->arg);
 	else
