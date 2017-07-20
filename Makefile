@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/18 20:55:05 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/20 16:14:09 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ OBJ = libft/ft_memccpy.o libft/ft_memmove.o libft/ft_strcpy.o\
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(CC) $(FLAGS) -g -c -o $@ $<
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)

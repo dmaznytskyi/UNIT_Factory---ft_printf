@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/19 18:57:25 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/20 16:53:02 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_wif(t_ftprintf *s, char *tmp)
 	}
 	else
 		tmp2 = (char*)malloc(sizeof(char) * numlen);
-	while (i < (s->fw - s->prec))
+	while (i < (s->fw - s->prec) && s->prec > 0)
 	{
 		tmp2[i] = ' ';
 		i++;

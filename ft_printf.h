@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/19 13:06:19 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/20 15:42:49 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_ftprintf
 	char	*output;	//string goto stdout
 	char	cl;			//conversion letter
 	void	*arg;		//argument itself
+	char	l;			//extra kostyl_letter
 }				t_ftprintf;
 
 int			ft_printf(const char *format, ...);
