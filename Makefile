@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/20 16:14:09 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/21 12:32:38 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJ = libft/ft_memccpy.o libft/ft_memmove.o libft/ft_strcpy.o\
 	  ft_s_small.o ft_s_big.o ft_p_small.o ft_d_small.o ft_d_big.o\
 	  ft_i_small.o ft_o_small.o ft_o_big.o ft_u_small.o ft_u_big.o\
 	  ft_x_small.o ft_x_big.o ft_c_small.o ft_c_big.o\
-	  ft_itoa_base.o\
+	  ft_itoa_base.o ft_isflag.o ft_is_sm.o\
 	  printf_info.o
 
 all: $(NAME)
