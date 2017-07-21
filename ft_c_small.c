@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:16:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/20 16:58:34 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/21 14:03:08 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	ft_wcf(t_ftprintf *s)
 	}
 	else
 	{
-		s->l == 0 ? (tmp[i++] = (char)s->arg) : (tmp[i++] = s->l);
+		s->l == 0 ? (tmp[i] = (char)s->arg) : (tmp[i] = s->l);
+		i++;
 		while (i < s->fw)
 			tmp[i++] = ' ';
 	}
@@ -43,7 +44,7 @@ void		ft_c_small(t_ftprintf *s, size_t *col)
 {
 	if (s->fw == 0)
 	{
-		s->cl == 0 ? ft_putchar((char)s->arg) : ft_putchar(s->l);
+		s->l == 0 ? ft_putchar((char)s->arg) : ft_putchar(s->l);
 		*col += 1;
 	}
 	else
