@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/03 13:51:15 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/20 15:41:01 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/21 16:50:53 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] != '%')
-			{
-				i++;
-				s = ft_ns(va_arg(p, void*));
-				ft_findallmodifiers(format, &s, &i);
-				ft_writeout(&s, &count_letters);
-			}
-			else
-			{
-				write(1, "%", 1);
-				i++;
-				count_letters++;
-			}
+			i++;
+			s = ft_ns(va_arg(p, void*));
+			ft_findallmodifiers(format, &s, &i);
+			ft_writeout(&s, &count_letters);
 		}
 		else
 		{
