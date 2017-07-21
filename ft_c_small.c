@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:16:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/21 14:03:08 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/21 15:29:45 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void		ft_c_small(t_ftprintf *s, size_t *col)
 	else
 	{
 		ft_wcf(s);
-		*col += ft_putstr(s->output);
+		*col += ft_putstr_until(s->output, s->fw);
 	}
 }
