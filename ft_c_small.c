@@ -6,11 +6,24 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:16:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/21 15:29:45 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/21 15:52:41 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_wsp(t_ftprintf *s, size_t *col)
+{
+	size_t	i;
+
+	i = 0;
+	*col += 1;
+	while (i < s->fw - 1)
+	{
+		write(1, " ", 1);
+		i++;
+	}
+}
 
 static void	ft_wcf(t_ftprintf *s)
 {
@@ -49,6 +62,7 @@ void		ft_c_small(t_ftprintf *s, size_t *col)
 	}
 	else
 	{
+		(s->arg == 0 && !s->l && s->flags[0]) ? ft_wsp(s, col) : 0;
 		ft_wcf(s);
 		*col += ft_putstr_until(s->output, s->fw);
 	}
