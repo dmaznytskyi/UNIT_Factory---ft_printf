@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/21 16:28:34 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/22 12:11:29 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
 	char *A = "this is tEEEEst!";
-	printf("|%5.3s|\t\t|%3.5s|\t|%7s|\t|%7.3s|\n", A, A, A, NULL);
-	ft_printf("|%5.3s|\t\t|%3.5s|\t|%7s|\t|%7.3s|\n", A, A, A, NULL);
+	printf("|%-020s|\t|%7s|\n", A, A);
+	ft_printf("|%-020s|\t|%7s|\n", A, A);
 	return (0);
 }
