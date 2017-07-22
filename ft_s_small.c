@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/22 12:28:39 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/22 13:03:18 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ static size_t	ret_prec(t_ftprintf *s)
 	size_t	len;
 
 	i = 0;
-	len = s->prec;
 	tmp = (char*)malloc(sizeof(char) * s->prec + 1);
 	tmp2 = (char*)s->arg;
-	len < ft_strlen(tmp2);
-	while (i < s->prec)
+	s->prec > 0 ? (len = s->prec) : (len = ft_strlen(tmp2));
+	while (i < len)
 	{
 		tmp[i] = tmp2[i];
 		i++;
@@ -52,7 +51,7 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 	s->flags[1] ? tmp = '0' : 0;
 	if (!s->flags[0])
 	{
-		if (s->fw > s->prec)
+		if (s->fw > s->prec && s->prec > 0)
 		{
 			*col += ft_psp(tmp, s->fw - s->prec);
 			*col += ret_prec(s);
@@ -65,7 +64,8 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 		if (s->fw > s->prec)
 		{
 			*col += ret_prec(s);
-			*col += ft_psp(' ', s->fw - s->prec);
+			s->prec > 0 ? (*col += ft_psp(' ', s->fw - s->prec)) :
+				(*col += ft_psp(' ', s->fw - ft_strlen((char*)s->arg)));
 		}
 		else
 			*col += ret_prec(s);
