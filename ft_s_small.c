@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/22 13:03:18 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/22 18:20:06 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	ret_prec(t_ftprintf *s)
 	s->prec > 0 ? (len = s->prec) : (len = ft_strlen(tmp2));
 	while (i < len)
 	{
-		tmp[i] = tmp2[i];
+		tmp2[i] ? (tmp[i] = tmp2[i]) : (tmp[i] = ' ');
 		i++;
 	}
 	return (ft_putstr(tmp));
@@ -43,11 +43,13 @@ static size_t	ft_psp(char c, size_t n)
 
 static void		ft_wsf(t_ftprintf *s, size_t *col)
 {
+	char	*str;
 	char	tmp;
 	size_t	i;
 
 	i = 0;
 	tmp = ' ';
+	str = (char*)s->arg;
 	s->flags[1] ? tmp = '0' : 0;
 	if (!s->flags[0])
 	{
@@ -57,7 +59,11 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 			*col += ret_prec(s);
 		}
 		else
+		{
+			if (!s->prec && s->fw > ft_strlen(str))
+				*col += ft_psp(tmp, s->fw - ft_strlen(str));
 			*col += ret_prec(s);
+		}
 	}
 	else
 	{
