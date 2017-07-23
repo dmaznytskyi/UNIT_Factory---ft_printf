@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/21 12:32:38 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/23 12:06:04 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,16 +50,16 @@ OBJ = libft/ft_memccpy.o libft/ft_memmove.o libft/ft_strcpy.o\
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -g -c -o $@ $<
+	@$(CC) $(FLAGS) -g -c -o $@ $<
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
