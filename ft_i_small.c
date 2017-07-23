@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:12:59 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/17 16:35:12 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/23 13:31:31 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ft_i_small(t_ftprintf *s, size_t *col)
 {
-		(void)s;
-		(void)col;
+	ft_d_small(s, col);
 }
