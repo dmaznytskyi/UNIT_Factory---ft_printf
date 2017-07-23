@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/22 18:20:06 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/23 12:01:39 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ static size_t	ft_psp(char c, size_t n)
 	return (n);
 }
 
+static void		emp_str(t_ftprintf *s, size_t *col)
+{
+	if (s->fw > 0)
+	{
+		s->flags[1] ? ft_psp('0', s->fw) : ft_psp(' ', s->fw);
+		*col += s->fw;
+	}
+}
+
+
 static void		ft_wsf(t_ftprintf *s, size_t *col)
 {
 	char	*str;
@@ -50,6 +60,11 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 	i = 0;
 	tmp = ' ';
 	str = (char*)s->arg;
+	if (!ft_strlen(str))
+	{
+		emp_str(s, col);
+		return ;
+	}
 	s->flags[1] ? tmp = '0' : 0;
 	if (!s->flags[0])
 	{
@@ -71,7 +86,7 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 		{
 			*col += ret_prec(s);
 			s->prec > 0 ? (*col += ft_psp(' ', s->fw - s->prec)) :
-				(*col += ft_psp(' ', s->fw - ft_strlen((char*)s->arg)));
+				(*col += ft_psp(' ', s->fw - ft_strlen(str)));
 		}
 		else
 			*col += ret_prec(s);
