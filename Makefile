@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/23 21:20:45 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/25 12:59:12 by anon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ all: $(NAME)
 	$(CC) $(FLAGS) -g -c -o $@ $<
 
 $(NAME): $(OBJ) libft/libft.a
-	ar -cru $(NAME) $(OBJ) 
+	mv libft/libft.a $(NAME)
+	ar -q $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 clean:
