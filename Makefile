@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/25 12:59:12 by anon             ###   ########.fr        #
+#    Updated: 2017/07/26 14:25:46 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,22 +27,22 @@ OBJ = ft_printf.o ft_putstr_until.o ft_cv.o ft_ns.o ft_pf.o ft_pfw.o\
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -g -c -o $@ $<
+	@$(CC) $(FLAGS) -g -c -o $@ $<
 
 $(NAME): $(OBJ) libft/libft.a
-	mv libft/libft.a $(NAME)
-	ar -q $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@mv libft/libft.a $(NAME)
+	@ar -q $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
-	make -C libft clean
+	@/bin/rm -f $(OBJ)
+	@make -C libft clean
 	
 fclean: clean
-	/bin/rm -f $(NAME)
-	make -C libft fclean
+	@/bin/rm -f $(NAME)
+	@make -C libft fclean
 
 libft/libft.a:
-	make -C libft
+	@make -C libft
 
 re: fclean all

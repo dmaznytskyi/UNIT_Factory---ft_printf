@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/23 20:04:46 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/23 21:20:43 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/26 14:26:02 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,18 +30,18 @@ OBJ = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o\
 	  ft_tolower.o ft_toupper.o
 
 %.o: %.c
-	$(CC) $(FLAGS) -g -c -o $@ $<
+	@$(CC) $(FLAGS) -g -c -o $@ $<
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -cru $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar -cru $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
