@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/23 20:04:46 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/26 14:26:02 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/27 15:32:40 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar -cru $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@mv libft.a ../libftprintf.a
 
 clean:
 	@/bin/rm -f $(OBJ)

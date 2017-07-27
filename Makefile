@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/07/26 14:25:46 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/07/27 15:36:43 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ all: $(NAME)
 %.o: %.c
 	@$(CC) $(FLAGS) -g -c -o $@ $<
 
-$(NAME): $(OBJ) libft/libft.a
-	@mv libft/libft.a $(NAME)
-	@ar -q $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	@$(LIBFT)
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
 clean:
@@ -42,7 +42,7 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@make -C libft fclean
 
-libft/libft.a:
+LIBFT:
 	@make -C libft
 
 re: fclean all
