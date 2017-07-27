@@ -1,47 +1,32 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_s_big.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/27 14:33:27 by dmaznyts         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+  0xxxxxxx
+  110xxxxx 10xxxxxx
+  1110xxxx 10xxxxxx 10xxxxxx
+  11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+ **/
 
-#include "ft_printf.h"
+//1110 110001
 
-//ft_wstrlen() для обрезки по пресижену
-//ft_wchar_to_char() каждый вчар_т выводит как масив чаров/интов
-
-static size_t	ft_bitcnt(int n)
+int main(int argc, char **argv)
 {
-	return (ft_strlen(ft_itoa_base(n, 2)));
-}
+	setlocale(LC_ALL, "en_US.UTF-8");
 
-static size_t	ft_wstrlen(wchar_t *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-static void		ft_write(size_t v)
-{
+	wchar_t value = L'。';
+	//我是一只猫。
+	unsigned int mask0 = 0;
 	unsigned int mask1 = 49280;
-	unsigned int mask2 = 14712960;
-	unsigned int mask3 = 4034953344;
+	unsigned int mask2= 14712960;
+	unsigned int mask3= 4034953344;
 
-	size_t	size = ft_bitcnt(v);
-	size_t	octet;
+	unsigned int v = value;
+	int size = size_bin(value);
+	int res = 0;
+	printf("size %d\n", size);
+	unsigned char octet;
 
 	if (size <= 7)
 	{
-		octet = v;
+		octet = value;
 		write(1, &octet, 1);
 	}
 	else  if (size <= 11)
@@ -83,19 +68,5 @@ static void		ft_write(size_t v)
 		octet = ((mask3 << 24) >> 24) | o4; // Применение последней битовой маски ко последнему байту
 		write(1, &octet, 1);
 	}
-}
-
-void			ft_s_big(t_ftprintf *s, size_t *col)
-{
-	size_t	i;
-	wchar_t	*st;
-
-	st = (wchar_t *)s->arg;
-	i = 0;
-	while (i < ft_wstrlen(st))
-	{
-		ft_write(st[i]);
-		i++;
-		*col += 1;
-	}
+	return (0);
 }
