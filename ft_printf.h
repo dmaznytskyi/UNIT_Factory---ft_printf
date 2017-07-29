@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/21 14:03:19 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/27 17:35:43 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,14 @@ void		ft_c_small(t_ftprintf *s, size_t *col);
 void		ft_c_big(t_ftprintf *s, size_t *col);
 
 void		printf_info(t_ftprintf *s);		/////////////////////////
+
+/*
+**	 функции для wchar_t
+*/
+
+void		ft_write_one(size_t val);
+void		ft_write_two(size_t val, unsigned int mask, size_t octet);
+void		ft_write_three(size_t val, unsigned int mask, size_t octet);
+void		ft_write_four(size_t val, unsigned int mask, size_t octet);
 
 #endif
