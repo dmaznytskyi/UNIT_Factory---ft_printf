@@ -6,20 +6,12 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/29 21:35:46 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/31 17:34:05 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//ft_wstrlen() для обрезки по пресижену
-//ft_wchar_to_char() каждый вчар_т выводит как масив чаров/интов
-/*
-static size_t	ft_bitcnt(int n)
-{
-	return (ft_strlen(ft_itoa_base(n, 2)));
-}
-*/
 static size_t	ft_wstrlen(wchar_t *s)
 {
 	size_t	len;
@@ -30,37 +22,50 @@ static size_t	ft_wstrlen(wchar_t *s)
 	return (len);
 }
 
-static void		ft_write(size_t v)
+static void		ft_write(size_t v, size_t *col)
 {
-	if (v <= 127)
+	size_t	size;
+
+	size = ft_strlen(ft_itoa_base(v, 2));
+	if (size <= 7)
 	{
 		ft_write_one(v);
+		*col += 1;
 	}
-	else if (v >= 128 && v <= 2047)
+	else if (size <= 11)
 	{
-		ft_write_two(v, 49280, 0);
+		ft_write_two(v);
+		*col += 2;
 	}
-	else if (v >= 2018 && v <= 65535)
+	else if (size <= 16)
 	{
-		ft_write_three(v, 14712960, 0);
+		ft_write_three(v);
+		*col += 3;
 	}
 	else
 	{
-		ft_write_four(v, 4034953344, 0);
+		ft_write_four(v);
+		*col += 4;
 	}
 }
 
 void			ft_s_big(t_ftprintf *s, size_t *col)
 {
 	size_t	i;
+	size_t	sum;
 	wchar_t	*st;
 
 	st = (wchar_t *)s->arg;
 	i = 0;
-	while (i < ft_wstrlen(st))
+	if (s->flags[0])
 	{
-		ft_write(st[i]);
-		i++;
-		*col += 1;
+	
 	}
+	else
+	{
+	
+	}
+	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
+	while (i < sum && i < s->fw)
+		ft_write(st[i++], col);
 }

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/27 17:35:43 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/07/31 15:28:02 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void		printf_info(t_ftprintf *s);		/////////////////////////
 */
 
 void		ft_write_one(size_t val);
-void		ft_write_two(size_t val, unsigned int mask, size_t octet);
-void		ft_write_three(size_t val, unsigned int mask, size_t octet);
-void		ft_write_four(size_t val, unsigned int mask, size_t octet);
+void		ft_write_two(size_t val);
+void		ft_write_three(size_t val);
+void		ft_write_four(size_t val);
 
 #endif
