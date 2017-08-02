@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 14:36:00 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/17 16:30:26 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:12:11 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_putstr(char const *s)
 
 	i = -1;
 	if (!s)
-		return 0;
+		return (0);
 	while (s[++i])
 		write(1, &s[i], 1);
 	return (i);

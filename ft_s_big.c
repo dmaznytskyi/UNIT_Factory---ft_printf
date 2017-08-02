@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/31 20:55:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/02 03:31:16 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,28 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 {
 	size_t	i;
 	size_t	sum;
+	size_t	pr;
+	size_t	bkp;
 	wchar_t	*st;
 
 	st = (wchar_t *)s->arg;
+	if (st == 0)
+		return ;
 	i = 0;
-/*	if (s->flags[0])
+	bkp = *col;
+	pr = *col + s->fw;
+	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
+	if (s->prec > 0)
 	{
-	
+		while (s->prec > 0)
+		{
+			ft_write(st[i++], col);
+			s->prec -= *col - bkp;
+		}
 	}
 	else
 	{
-	
+		while (i < sum/* && i < s->fw*/)
+			ft_write(st[i++], col);
 	}
-*/	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
-	while (i < sum/* && i < s->fw*/)
-		ft_write(st[i++], col);
 }
