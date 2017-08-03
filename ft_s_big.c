@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/03 16:45:21 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/03 20:57:17 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,18 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 		//выводим строку по пресижн, потом если fw > 0 и fw > *col - bkp забиваем пробелами до fw 
 		if (s->prec > 0)
 		{
-			ft_write(st[i++], col);
-			s->prec -= *col - bkp;
+			while (s->prec > 0)
+			{
+				ft_write(st[i++], col);
+				s->prec -= *col - bkp;
+			}
 			if (s->fw > 0 && s->fw > *col - bkp)
 				*col += ft_psp(s->fw - (*col - bkp));
+			if ((int)st == 0)
+			{
+				*col += 4;
+				write(1, " ", 1);
+			}
 		}
 		else
 		{
