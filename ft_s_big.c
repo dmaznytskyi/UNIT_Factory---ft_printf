@@ -6,11 +6,17 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/02 03:31:16 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/03 13:13:13 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		ft_psp(size_t len)
+{
+	while (len-- > 0)
+		write(1, " ", 1);
+}
 
 static size_t	ft_wstrlen(wchar_t *s)
 {
@@ -64,17 +70,21 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	bkp = *col;
 	pr = *col + s->fw;
 	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
-	if (s->prec > 0)
+	if (s->flags[0])
 	{
-		while (s->prec > 0)
+		ft_psp(s->fw );
+		if (s->prec > 0)
 		{
-			ft_write(st[i++], col);
-			s->prec -= *col - bkp;
+			while (s->prec > 0)
+			{
+				ft_write(st[i++], col);
+				s->prec -= *col - bkp;
+			}
 		}
-	}
-	else
-	{
-		while (i < sum/* && i < s->fw*/)
-			ft_write(st[i++], col);
+		else
+		{
+			while (i < sum/* && i < s->fw*/)
+				ft_write(st[i++], col);
+		}
 	}
 }
