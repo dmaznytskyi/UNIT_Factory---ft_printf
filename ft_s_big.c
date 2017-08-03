@@ -6,16 +6,17 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/03 13:13:13 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/03 16:45:21 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_psp(size_t len)
+static size_t	ft_psp(size_t len)
 {
 	while (len-- > 0)
 		write(1, " ", 1);
+	return (len);
 }
 
 static size_t	ft_wstrlen(wchar_t *s)
@@ -71,20 +72,26 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	pr = *col + s->fw;
 	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
 	if (s->flags[0])
-	{
-		ft_psp(s->fw );
+	{ 
+		//если есть флаг минус
+		//выводим строку по пресижн, потом если fw > 0 и fw > *col - bkp забиваем пробелами до fw 
 		if (s->prec > 0)
 		{
-			while (s->prec > 0)
-			{
-				ft_write(st[i++], col);
-				s->prec -= *col - bkp;
-			}
+			ft_write(st[i++], col);
+			s->prec -= *col - bkp;
+			if (s->fw > 0 && s->fw > *col - bkp)
+				*col += ft_psp(s->fw - (*col - bkp));
 		}
 		else
 		{
-			while (i < sum/* && i < s->fw*/)
+			while (i < sum)
 				ft_write(st[i++], col);
 		}
+	}
+	else
+	{
+		//если флага минус нет
+		//выводим пробелы 
+		i = 0;
 	}
 }
