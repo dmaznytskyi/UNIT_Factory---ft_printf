@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/06 02:16:21 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/06 23:34:46 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 static size_t	ft_psp(size_t len)
 {
-	while (len-- > 0)
+	size_t	i;
+
+	i = -1;
+	while (++i < len)
 		write(1, " ", 1);
 	return (len);
 }
-
+/*
 static size_t	ft_wstrlen(wchar_t *s)
 {
 	size_t	len;
@@ -28,7 +31,7 @@ static size_t	ft_wstrlen(wchar_t *s)
 		len++;
 	return (len);
 }
-
+*/
 static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
 {
 	size_t	size;
@@ -63,20 +66,14 @@ static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
 void			ft_s_big(t_ftprintf *s, size_t *col)
 {
 	size_t	i;
-	size_t	sum;
-	size_t	pr;
 	size_t	bkp;
 	size_t	len;
 	wchar_t	*st;
 
 	st = (wchar_t *)s->arg;
-	if (st == 0)
-		return ;
 	i = 0;
 	len = 0;
 	bkp = *col;
-	pr = *col + s->fw;
-	s->prec ? (sum = s->prec) : (sum = ft_wstrlen(st));
 	if (s->flags[0])
 	{ 
 		//если есть флаг минус
@@ -96,28 +93,28 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 		//если флага минус нет
 		if (s->prec == 0 && s->fw == 0)
 			while (st[i])
-				ft_write(st[i++], col, &len, 2147483648);
+				ft_write(st[i++], col, &len, 99999999999);
 		else if (s->prec > s->fw)
 			while (len < s->fw)
 				ft_write(st[i++], col, &len, s->fw);
 		else
 		{
-			if (s->fw > ft_wstrlen(st))
+			if (!s->prec)
+			{
 				while (st[i])
 					ft_write(st[i++], col, &len, 2147483648);
-			else
-			{
-				if (s->fw > s->prec)
-				{
-					*col += ft_psp(s->fw - s->prec);
-					len += (s->fw - s->prec);
-					while (len < s->fw)
-						ft_write(st[i++], col, &len, s->fw);
-				}
-				else
-					while (st)
-						ft_write(st[i++], col, &len, 2147483648);
 			}
+			else if (s->fw)
+			{
+				*col += ft_psp(s->fw - s->prec);
+				st[0] != 0 ? 0 : (ft_psp(s->prec));
+				len += (s->fw - s->prec);
+				while (len < s->fw)
+					ft_write(st[i++], col, &len, s->fw);
+			}
+			else
+				while (len < s->prec)
+					ft_write(st[i++], col, &len, s->prec);
 		}
 	}
 }
