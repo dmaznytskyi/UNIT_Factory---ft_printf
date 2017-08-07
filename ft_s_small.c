@@ -98,6 +98,8 @@ void		ft_s_small(t_ftprintf *s, size_t *col)
 {
 	if (!(char*)s->arg)
 		s->arg = (void*)ft_strdup("(null)");
+	if (s->sm == 'l')
+		ft_s_big(s, col);
 	if (!s->fw && !s->prec)
 		*col += ft_putstr((char*)s->arg);
 	else
