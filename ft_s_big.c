@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/07 16:09:47 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/07 21:26:05 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	ft_psp(size_t len)
 		write(1, " ", 1);
 	return (i);
 }
-
+/*
 static size_t	ft_wstrlen(wchar_t *s)
 {
 	size_t	len;
@@ -31,8 +31,8 @@ static size_t	ft_wstrlen(wchar_t *s)
 		len++;
 	return (len);
 }
-
-static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
+*/
+static unsigned char	*ft_write(size_t v, size_t *col, size_t *len, size_t max)
 {
 	size_t			size;
 	unsigned char	*arr;
@@ -44,6 +44,7 @@ static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
 		arr = ft_wstrjoin(arr, ft_one(v));
 		*col += 1;
 		*len += 1;
+		return (ft_one(v));
 	}
 	else if (size <= 11 && *len + 2 <= max)
 	{
@@ -64,8 +65,8 @@ static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
 		*len += 4;
 	}
 }
-
-static char		*ft_croped_prec(wchar_t *st)	//first - forming the output string, croped by precision!
+/*
+static char		*ft_croped_prec(wchar_t *st)
 {
 	unsigned char	*ret;
 	unsigned char	*tmp;
@@ -75,14 +76,15 @@ static char		*ft_croped_prec(wchar_t *st)	//first - forming the output string, c
 	
 	return (ret);
 }
-
+*/
 void			ft_s_big(t_ftprintf *s, size_t *col)
 {
-	size_t	i;
-	size_t	bkp;
-	size_t	len;
-	wchar_t	*st;
-
+	unsigned char	*wr;
+	size_t			i;
+	size_t			bkp;
+	size_t			len;
+	wchar_t			*st;
+	
 	st = (wchar_t *)s->arg;
 	i = 0;
 	len = 0;

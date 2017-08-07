@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 14:56:54 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/07 16:09:52 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/07 21:26:10 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ unsigned char	*ft_wstrjoin(unsigned char *s1, unsigned char *s2)
 	while (s1[j])
 		res[i++] = s1[j++];
 	j = 0;
-	free(s1);
+//	free(s1);
 	while (s2[j])
 		res[i++] = s2[j++];
-	free(s2);
+//	free(s2);
 	res[i] = '\0';
 	return (res);
 }
