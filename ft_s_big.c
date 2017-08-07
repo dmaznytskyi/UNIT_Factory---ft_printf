@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/06 23:34:46 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/07 16:09:47 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static size_t	ft_psp(size_t len)
 	i = -1;
 	while (++i < len)
 		write(1, " ", 1);
-	return (len);
+	return (i);
 }
-/*
+
 static size_t	ft_wstrlen(wchar_t *s)
 {
 	size_t	len;
@@ -31,36 +31,49 @@ static size_t	ft_wstrlen(wchar_t *s)
 		len++;
 	return (len);
 }
-*/
+
 static void		ft_write(size_t v, size_t *col, size_t *len, size_t max)
 {
-	size_t	size;
+	size_t			size;
+	unsigned char	*arr;
 
+	arr = (unsigned char*)"";
 	size = ft_strlen(ft_itoa_base(v, 2));
 	if (size <= 7 && *len + 1 <= max)
 	{
-		ft_write_one(v);
+		arr = ft_wstrjoin(arr, ft_one(v));
 		*col += 1;
 		*len += 1;
 	}
 	else if (size <= 11 && *len + 2 <= max)
 	{
-		ft_write_two(v);
+		arr = ft_wstrjoin(arr, ft_two(v));
 		*col += 2;
 		*len += 2;
 	}
 	else if (size <= 16 && *len + 3 <= max)
 	{
-		ft_write_three(v);
+		arr = ft_wstrjoin(arr, ft_three(v));
 		*col += 3;
 		*len += 3;
 	}
 	else if (*len + 4 <= max)
 	{
-		ft_write_four(v);
+		arr = ft_wstrjoin(arr, ft_four(v));
 		*col += 4;
 		*len += 4;
 	}
+}
+
+static char		*ft_croped_prec(wchar_t *st)	//first - forming the output string, croped by precision!
+{
+	unsigned char	*ret;
+	unsigned char	*tmp;
+
+	tmp = (char*)malloc(sizeof(char) * 4);
+	ret = (char*)malloc(sizeof(char) * (ft_wstrlen(st) * 4));
+	
+	return (ret);
 }
 
 void			ft_s_big(t_ftprintf *s, size_t *col)
@@ -93,7 +106,7 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 		//если флага минус нет
 		if (s->prec == 0 && s->fw == 0)
 			while (st[i])
-				ft_write(st[i++], col, &len, 99999999999);
+				ft_write(st[i++], col, &len, 2147483648);
 		else if (s->prec > s->fw)
 			while (len < s->fw)
 				ft_write(st[i++], col, &len, s->fw);
