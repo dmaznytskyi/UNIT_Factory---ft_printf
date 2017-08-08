@@ -6,21 +6,12 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/07 21:26:05 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/08 12:12:43 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	ft_psp(size_t len)
-{
-	size_t	i;
-
-	i = -1;
-	while (++i < len)
-		write(1, " ", 1);
-	return (i);
-}
 /*
 static size_t	ft_wstrlen(wchar_t *s)
 {
@@ -32,39 +23,6 @@ static size_t	ft_wstrlen(wchar_t *s)
 	return (len);
 }
 */
-static unsigned char	*ft_write(size_t v, size_t *col, size_t *len, size_t max)
-{
-	size_t			size;
-	unsigned char	*arr;
-
-	arr = (unsigned char*)"";
-	size = ft_strlen(ft_itoa_base(v, 2));
-	if (size <= 7 && *len + 1 <= max)
-	{
-		arr = ft_wstrjoin(arr, ft_one(v));
-		*col += 1;
-		*len += 1;
-		return (ft_one(v));
-	}
-	else if (size <= 11 && *len + 2 <= max)
-	{
-		arr = ft_wstrjoin(arr, ft_two(v));
-		*col += 2;
-		*len += 2;
-	}
-	else if (size <= 16 && *len + 3 <= max)
-	{
-		arr = ft_wstrjoin(arr, ft_three(v));
-		*col += 3;
-		*len += 3;
-	}
-	else if (*len + 4 <= max)
-	{
-		arr = ft_wstrjoin(arr, ft_four(v));
-		*col += 4;
-		*len += 4;
-	}
-}
 /*
 static char		*ft_croped_prec(wchar_t *st)
 {
@@ -77,11 +35,66 @@ static char		*ft_croped_prec(wchar_t *st)
 	return (ret);
 }
 */
+static unsigned char	*ft_psp(size_t len)
+{
+	unsigned char	*ret;
+	size_t			i;
+
+	ret = (unsigned char*)malloc(sizeof(unsigned char) * len + 1);
+	i = -1;
+	while (++i < len)
+		ret[i] = ' ';
+	ret[i] = '\0';
+	return (ret);
+}
+
+static size_t			ft_putustr(unsigned char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
+{
+	size_t			size;
+
+	if (max = 0)
+		*len = 0;
+	size = ft_strlen(ft_itoa_base(v, 2));
+	if (size <= 7 && *len + 1 <= max)
+	{
+		*len += 1;
+		return (ft_one(v));
+	}
+	else if (size <= 11 && *len + 2 <= max)
+	{
+		*len += 2;
+		return (ft_two(v));
+	}
+	else if (size <= 16 && *len + 3 <= max)
+	{
+		*len += 3;
+		return (ft_three(v));
+	}
+	else if (*len + 4 <= max)
+	{
+		*len += 4;
+		return (ft_four(v));
+	}
+}
+
 void			ft_s_big(t_ftprintf *s, size_t *col)
 {
 	unsigned char	*wr;
+	unsigned char	*tmp;
 	size_t			i;
-	size_t			bkp;
 	size_t			len;
 	wchar_t			*st;
 	
@@ -89,16 +102,19 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	i = 0;
 	len = 0;
 	bkp = *col;
-	if (s->flags[0])
+	if (s->prec == 0 && s->fw == 0)
+		while (st[i])
+			 = ft_write(st[i++], &len, 0);
+	else if (s->flags[0])
 	{ 
 		//если есть флаг минус
-		if (s->prec > s->fw)
+		if (s->fw > s->prec && s->prec > 0)
 			while (*col - bkp < s->fw && len < *col - bkp && s->fw > 0)
-				ft_write(st[i++], col, &len, s->fw);
+				ft_write(st[i++], &len, s->fw);
 		else
 		{
 			while (len < s->prec)
-				ft_write(st[i++], col, &len, s->prec);
+				ft_write(st[i++], &len, s->prec);
 			if (len < s->fw)
 				*col += ft_psp(s->fw - (*col - bkp));
 		}
@@ -106,18 +122,15 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	else
 	{
 		//если флага минус нет
-		if (s->prec == 0 && s->fw == 0)
-			while (st[i])
-				ft_write(st[i++], col, &len, 2147483648);
-		else if (s->prec > s->fw)
+		if (s->prec > s->fw)
 			while (len < s->fw)
-				ft_write(st[i++], col, &len, s->fw);
+				ft_write(st[i++], &len, s->fw);
 		else
 		{
 			if (!s->prec)
 			{
 				while (st[i])
-					ft_write(st[i++], col, &len, 2147483648);
+					ft_write(st[i++], &len, 2147483648);
 			}
 			else if (s->fw)
 			{
@@ -125,11 +138,12 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 				st[0] != 0 ? 0 : (ft_psp(s->prec));
 				len += (s->fw - s->prec);
 				while (len < s->fw)
-					ft_write(st[i++], col, &len, s->fw);
+					ft_write(st[i++], &len, s->fw);
 			}
 			else
 				while (len < s->prec)
-					ft_write(st[i++], col, &len, s->prec);
+					ft_write(st[i++], &len, s->prec);
 		}
 	}
+	*col += ft_putustr(wr);
 }

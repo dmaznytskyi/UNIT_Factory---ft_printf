@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/23 12:01:39 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/08 10:31:38 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		ft_s_small(t_ftprintf *s, size_t *col)
 {
 	if (!(char*)s->arg)
 		s->arg = (void*)ft_strdup("(null)");
-	if (s->sm == 'l')
+	if (s->sm == 4)
 		ft_s_big(s, col);
 	if (!s->fw && !s->prec)
 		*col += ft_putstr((char*)s->arg);
