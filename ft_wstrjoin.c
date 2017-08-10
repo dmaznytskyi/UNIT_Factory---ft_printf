@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 14:56:54 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/07 21:26:10 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/09 21:08:35 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t			ft_ustrlen(unsigned char *s)
 	return (len);
 }
 
-unsigned char	*ft_wstrjoin(unsigned char *s1, unsigned char *s2)
+unsigned char	*ft_ustrjoin(unsigned char *s1, unsigned char *s2)
 {
 	unsigned char	*res;
 	size_t			i;

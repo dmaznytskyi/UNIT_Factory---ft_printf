@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/08 12:12:43 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/10 18:13:14 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static size_t			ft_putustr(unsigned char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (-1);
 	while (s[i] != '\0')
 	{
 		write(1, &s[i], 1);
@@ -65,8 +67,11 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 {
 	size_t			size;
 
-	if (max = 0)
+	if (max == 0)
+	{
 		*len = 0;
+		max = 5;
+	}
 	size = ft_strlen(ft_itoa_base(v, 2));
 	if (size <= 7 && *len + 1 <= max)
 	{
@@ -88,11 +93,11 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 		*len += 4;
 		return (ft_four(v));
 	}
+	return (0);
 }
 
 void			ft_s_big(t_ftprintf *s, size_t *col)
 {
-	unsigned char	*wr;
 	unsigned char	*tmp;
 	size_t			i;
 	size_t			len;
@@ -101,22 +106,23 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	st = (wchar_t *)s->arg;
 	i = 0;
 	len = 0;
-	bkp = *col;
+	tmp = (unsigned char*)malloc(sizeof(unsigned char) * 1);
+	tmp[0] = 0;
 	if (s->prec == 0 && s->fw == 0)
 		while (st[i])
-			 = ft_write(st[i++], &len, 0);
+			tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 0));
 	else if (s->flags[0])
 	{ 
 		//если есть флаг минус
 		if (s->fw > s->prec && s->prec > 0)
-			while (*col - bkp < s->fw && len < *col - bkp && s->fw > 0)
-				ft_write(st[i++], &len, s->fw);
+			while (*col < s->fw && len < *col && s->fw > 0)
+				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
 		else
 		{
 			while (len < s->prec)
-				ft_write(st[i++], &len, s->prec);
+				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 			if (len < s->fw)
-				*col += ft_psp(s->fw - (*col - bkp));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
 		}
 	}
 	else
@@ -124,26 +130,26 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 		//если флага минус нет
 		if (s->prec > s->fw)
 			while (len < s->fw)
-				ft_write(st[i++], &len, s->fw);
+				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
 		else
 		{
 			if (!s->prec)
 			{
 				while (st[i])
-					ft_write(st[i++], &len, 2147483648);
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 2147483648));
 			}
 			else if (s->fw)
 			{
-				*col += ft_psp(s->fw - s->prec);
-				st[0] != 0 ? 0 : (ft_psp(s->prec));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - s->prec));
+				st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
 				len += (s->fw - s->prec);
 				while (len < s->fw)
-					ft_write(st[i++], &len, s->fw);
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
 			}
 			else
 				while (len < s->prec)
-					ft_write(st[i++], &len, s->prec);
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		}
 	}
-	*col += ft_putustr(wr);
+	*col += ft_putustr(tmp);
 }

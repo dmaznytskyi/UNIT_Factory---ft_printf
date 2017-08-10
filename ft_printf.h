@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/08 12:12:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/09 21:08:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			ft_writeout(t_ftprintf *s, size_t *col);
 size_t			ft_putanynbr(size_t num);
 size_t			ft_ustrlen(unsigned char *s);
 t_ftprintf		ft_ns(void *arg);
-unsigned char	*ft_wstrjoin(unsigned char *s1, unsigned char *s2);
+unsigned char	*ft_ustrjoin(unsigned char *s1, unsigned char *s2);
 
 /*
 ** функции - конвершн леттеры
