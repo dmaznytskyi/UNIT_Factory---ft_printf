@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/12 17:59:53 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/12 18:19:54 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 			while (len < s->prec)
 				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 			if (len < s->fw)
-				tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - len));
 		}
 	}
 	else
@@ -146,12 +146,12 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 				while (len < s->fw)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
 			}
-/*			else if (s->fw < s->prec)
+			else if (s->fw < s->prec)
 			{
 				while (len < s->prec)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 			}
-*/			else
+			else
 				while (len < s->prec)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		}
