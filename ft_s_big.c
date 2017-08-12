@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/12 14:48:56 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/12 17:59:53 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 		*len += 4;
 		return (ft_four(v));
 	}
-	return (0);
+	return ((unsigned char*)"");
 }
 
 void			ft_s_big(t_ftprintf *s, size_t *col)
@@ -128,9 +128,9 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	else
 	{
 		//если флага минус нет
-		if (s->prec > s->fw)
+		if (s->prec > s->fw && s->fw > 0)
 			while (len < s->fw)
-				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
+				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		else
 		{
 			if (!s->prec)
@@ -146,7 +146,12 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 				while (len < s->fw)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
 			}
-			else
+/*			else if (s->fw < s->prec)
+			{
+				while (len < s->prec)
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
+			}
+*/			else
 				while (len < s->prec)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		}
