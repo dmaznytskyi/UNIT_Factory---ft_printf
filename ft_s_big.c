@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/14 21:09:25 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/14 21:37:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 		*len += 3;
 		return (ft_three(v));
 	}
-	else if (*len + 4 <= max)
+	else if (size > 16 && *len + 4 <= max)
 	{
 		*len += 4;
 		return (ft_four(v));

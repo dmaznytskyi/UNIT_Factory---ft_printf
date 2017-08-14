@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/07 11:21:12 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/14 22:38:12 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ int main()
 //	printf("origin	|%-5.3S|\t\t|%-3.5S|\t|%-7S|\t|%-7.3S|\n",a,a,a,L"");
 //	ft_printf("ft	|%-5.3S|\t\t|%-3.5S|\t|%-7S|\t|%-7.3S|\n",a,a,a,L"");
 */
-	i = printf("|%10.3S|\n",L"ϣ");
-	i = printf("|%10.3S|\n",L"Ͽ");
-	i = printf("|%10.3S|\n",L"你");
-	i = ft_printf("|%10.3S|\n",L"你");
+	i = printf("|%.10S|\n",L"ድመቶች ሰዎች አልወደውም.");
+	i = ft_printf("|%.10S|\n",L"ድመቶች ሰዎች አልወደውም.");
 	return (0);
 }
