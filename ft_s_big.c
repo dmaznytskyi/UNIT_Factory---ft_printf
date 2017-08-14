@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/14 15:56:56 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/14 17:56:07 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,39 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 	else if (s->flags[0])
 	{ 
 		//если есть флаг минус
-		if (s->fw > s->prec && s->prec > 0)
-			while (len < s->fw && s->fw > 0)
-				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
+		if (s->prec > s->fw && s->fw > 0)
+			while (len < s->fw)
+				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		else
 		{
-			while (len < s->prec)
-				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
-			if (len < s->fw)
-				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - len));
+			if (!s->prec)
+			{
+				while (st[i])
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 2147483648));
+			}
+			else if (s->fw)
+			{
+				st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
+				len += ft_ustrlen(tmp);
+				while (len < s->fw)
+					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
+			}
+			else if (s->fw < s->prec)
+			{
+				if (st[0] != 0)
+					while (len < s->prec)
+						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
+				else
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+			}
+			else
+			{
+				if (st[0] != 0)
+					while (len < s->prec)
+						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
+				else
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+			}
 		}
 	}
 	else
