@@ -6,35 +6,12 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/14 21:37:52 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/15 12:37:19 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-static size_t	ft_wstrlen(wchar_t *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-*/
-/*
-static char		*ft_croped_prec(wchar_t *st)
-{
-	unsigned char	*ret;
-	unsigned char	*tmp;
-
-	tmp = (char*)malloc(sizeof(char) * 4);
-	ret = (char*)malloc(sizeof(char) * (ft_wstrlen(st) * 4));
-	
-	return (ret);
-}
-*/
 static unsigned char	*ft_psp(size_t len)
 {
 	unsigned char	*ret;
@@ -93,10 +70,12 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 		*len += 4;
 		return (ft_four(v));
 	}
+	else
+		*len += 5;
 	return ((unsigned char*)"");
 }
 
-void			ft_s_big(t_ftprintf *s, size_t *col)
+void					ft_s_big(t_ftprintf *s, size_t *col)
 {
 	unsigned char	*tmp;
 	size_t			i;
@@ -126,11 +105,11 @@ void			ft_s_big(t_ftprintf *s, size_t *col)
 			}
 			else if (s->fw)
 			{
-				st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
+				//st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
 				len += ft_ustrlen(tmp);
 				while (len < s->prec)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
-				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - s->prec));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - ft_ustrlen(tmp)));
 			}
 			else if (s->fw < s->prec)
 			{
