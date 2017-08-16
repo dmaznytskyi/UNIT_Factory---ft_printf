@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:06:14 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/16 15:13:12 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/16 17:46:16 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,20 @@ static char	*ft_add_cc(size_t num, char c)
 void	ft_p_small(t_ftprintf *s, size_t *col)
 {
 	char	*tmp;
+/*	char	*adr;
 
-	tmp = ft_strdup("0x");
-	tmp = ft_strjoin(tmp, ft_sultoa_base((long)s->arg, 16));
+	adr = ft_sultoa_base((unsigned long)s->arg, 16);
+*/	tmp = ft_strdup("0x");
+/*	if (s->flags[0])
+	{
+		if (s->prec > 0)
+		{
+			
+		}
+	}
+	else
+	{}
+*/	tmp = ft_strjoin(tmp, ft_sultoa_base((unsigned long)s->arg, 16));
 	tmp = ft_strjoin(tmp, ft_add_cc(0, '0'));
 	*col += ft_putstr(tmp);
 }
