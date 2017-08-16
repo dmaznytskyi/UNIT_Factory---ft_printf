@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:06:14 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/15 17:34:33 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/16 11:57:25 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_p_small(t_ftprintf *s, size_t *col)
 	char	*tmp;
 
 	tmp = ft_strdup("0x");
-	tmp = ft_strjoin(tmp, ft_sltoa_base((long)s->arg, 16));
+	tmp = ft_strjoin(tmp, ft_sultoa_base((long)s->arg, 16));
 	tmp = ft_strjoin(tmp, ft_add_cc(0, '0'));
 	*col += ft_putstr(tmp);
 }
