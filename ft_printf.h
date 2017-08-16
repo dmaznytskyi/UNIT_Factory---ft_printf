@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/16 11:57:17 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/17 00:02:11 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_ftprintf
 	size_t	f_end;		//% format end index
 	char	flags[5];	//flags in a char arr
 	size_t	fw;			//field width
+	int		ip;			//if precision
 	size_t	prec;		//precision
 	char	sm;			//size modifier
 	char	*output;	//string goto stdout

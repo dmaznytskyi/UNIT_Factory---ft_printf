@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/15 17:37:18 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/16 21:55:14 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main()
 {
 	setlocale(LC_ALL, "en_US.UTF-8");
-//	wchar_t *a = L"ድመቶች ሰዎች አልወደውም.";
+	wchar_t *a = L"ድመቶች ሰዎች አልወደውም.";
 //	wchar_t *b = L"";
 	int i = 0;
 /*	printf("-------------------------------------------------\n");
@@ -51,6 +51,6 @@ int main()
 //	char *tmp = ft_strdup("123");
 //	i = printf("|%S|%ls|\n",L"©",L"@");
 //	i = ft_printf("|%S|%ls|\n",L"©",L"@");
-	i = printf("%d\n", sizeof(unsigned long));
+	i = printf("%.3p\n", a);
 	return (0);
 }

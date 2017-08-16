@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 10:14:05 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/20 15:44:19 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/16 22:29:47 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ftprintf	ft_ns(void *arg)
 	while (++i < 5)
 		new.flags[i] = 0;
 	new.fw = 0;
+	new.ip = 0;
 	new.prec = 0;
 	new.sm = 0;
 	new.cl = 0;
