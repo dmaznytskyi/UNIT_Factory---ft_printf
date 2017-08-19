@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/17 17:47:11 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/19 16:57:10 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 int main()
 {
 	setlocale(LC_ALL, "en_US.UTF-8");
-	wchar_t *a = L"ድመቶች ሰዎች አልወደውም.";
+//	wchar_t *a = L"ድመቶች ሰዎች አልወደውም.";
 //	wchar_t *b = L"";
 	int i = 0;
-	printf("-------------------------------------------------\n");
+/*	printf("-------------------------------------------------\n");
 	printf("|%%.0p|\t\t|%%6p|\t\t|%%6.p|\t|%%10.6p|\n");
 	i = printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|",NULL,NULL,NULL,NULL);
 	printf("\tret: %d\n", i);
@@ -52,5 +52,7 @@ int main()
 //	i = printf("|%S|%ls|\n",L"©",L"@");
 //	i = ft_printf("|%S|%ls|\n",L"©",L"@");
 //	i = printf("%.3p\n", a);
+*/
+	i = ft_printf("|%012o|\n",-42);
 	return (0);
 }

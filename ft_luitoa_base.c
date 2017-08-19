@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cv.c                                            :+:      :+:    :+:   */
+/*   ft_luitoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/07 10:13:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/19 17:17:57 by dmaznyts         ###   ########.fr       */
+/*   Created: 2017/08/19 17:10:41 by dmaznyts          #+#    #+#             */
+/*   Updated: 2017/08/19 17:17:04 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_cv(char a, t_ftprintf *st)
+static void	f(unsigned int value, int base, char *str, int *i)
 {
-	char	*s;
-	int		i;
+	char	*tmp;
 
-	s = "sSpdDioOuUxXcC";
+	tmp = "0123456789ABCDEF";
+	if (value >= (unsigned int)base)
+		f(value / base, base, str, i);
+	str[(*i)++] = tmp[(value % base)];
+}
+
+char		*ft_luitoa_base(unsigned int value, int base)
+{
+	int		i;
+	char	*str;
+
 	i = 0;
-	while (a != s[i] && i < 14)
-		i++;
-	if (i == 14)
-	{
-		if (ft_is_sm(a) || ft_isdigit(a) || ft_isflag(a) || a == '.')
-			return (0);
-		else
-		{
-			st->cl = 'c';
-			st->arg = (void*)0;
-			st->l = a;
-			return (1);
-		}
-	}
-	else
-	{
-		st->cl = s[i];
-		return (1);
-	}
+	if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
+		return (0);
+	f(value, base, str, &i);
+	str[i] = '\0';
+	return (str);
 }

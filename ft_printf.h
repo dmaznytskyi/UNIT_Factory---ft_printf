@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/17 11:29:37 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/19 17:15:13 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int				ft_cv(char a, t_ftprintf *st);
 int				ft_isflag(char a);
 int				ft_is_sm(char a);
 char			*ft_itoa_base(int value, int base);
+char			*ft_uitoa_base(unsigned int value, int base);
+char			*ft_luitoa_base(unsigned int value, int base);
 char			*ft_lltoa_base(long value, int base);
 char			*ft_sultoa_base(unsigned long value, int base);
 void			ft_pf(t_ftprintf *s);
