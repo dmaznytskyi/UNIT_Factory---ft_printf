@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/20 17:46:40 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/21 14:55:44 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,20 @@ static char	*ft_add_cc(size_t num, char c)
 
 static char	*ft_casting(t_ftprintf *s)
 {
-	
+	if (s->sm == 1)
+		return (ft_sttoa_base((size_t)s->arg, 10));
+	else if (s->sm == 2)
+		return (0);
+	else if (s->sm == 3)
+		return (0);
+	else if (s->sm == 4)
+		return (0);
+	else if (s->sm == 5)
+		return (0);
+	else if (s->sm == 6)
+		return (0);
+	else
+		return (0);
 }
 
 static char	*ft_ret_prec(size_t prec, char *num)
@@ -43,6 +56,7 @@ static char	*ft_ret_prec(size_t prec, char *num)
 		tmp = ft_strjoin(tmp, ft_add_cc(prec - ft_strlen(num), '0'));
 		tmp = ft_strjoin(tmp, num);
 	}
+	return (tmp);
 }
 
 void		ft_d_small(t_ftprintf *s, size_t *col)

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/19 16:57:10 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/21 14:50:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ int main()
 //	i = ft_printf("|%S|%ls|\n",L"©",L"@");
 //	i = printf("%.3p\n", a);
 */
-	i = ft_printf("|%012o|\n",-42);
+	i = printf("%llu\n",sizeof(size_t));
 	return (0);
 }
