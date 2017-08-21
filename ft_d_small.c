@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/21 14:55:44 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/21 15:11:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_casting(t_ftprintf *s)
 	if (s->sm == 1)
 		return (ft_sttoa_base((size_t)s->arg, 10));
 	else if (s->sm == 2)
-		return (0);
+		return (1);
 	else if (s->sm == 3)
 		return (0);
 	else if (s->sm == 4)
