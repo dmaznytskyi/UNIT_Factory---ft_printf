@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/21 17:48:41 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:21:48 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static char	*ft_casting(t_ftprintf *s)
 	else if (s->sm == 2)
 		return (ft_imttoa_base((intmax_t)s->arg, 10));
 	else if (s->sm == 3)
-		return (ft_itoa_base((int)s->arg, 10));
+		return (ft_llltoa_base((long long)s->arg, 10));
 	else if (s->sm == 4)
-		return (ft_itoa_base((int)s->arg, 10));
+		return (ft_lltoa_base((long)s->arg, 10));
 	else if (s->sm == 5)
-		return (ft_itoa_base((int)s->arg, 10));
+		return (ft_sitoa_base((short int)s->arg, 10));
 	else if (s->sm == 6)
-		return (ft_itoa_base((int)s->arg, 10));
+		return (ft_ctoa_base((char)s->arg, 10));
 	else
 		return (ft_itoa_base((int)s->arg, 10));
 }
@@ -56,6 +56,8 @@ static char	*ft_ret_prec(size_t prec, char *num)
 		tmp = ft_strjoin(tmp, ft_add_cc(prec - ft_strlen(num), '0'));
 		tmp = ft_strjoin(tmp, num);
 	}
+	else
+		tmp = ft_strjoin(tmp, num);
 	return (tmp);
 }
 
@@ -64,7 +66,9 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	char	*num;
 	char	*tmp;
 	char	c;
+	int		i;
 
+	i = 0;
 	s->flags[1] ? (c = '0') : (c = ' ');
 	if (s->flags[1] && s->ip)
 		c = ' ';

@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 13:18:17 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/08/21 15:53:52 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/08/22 17:19:27 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ OBJ = ft_printf.o ft_putstr_until.o ft_cv.o ft_ns.o ft_pf.o ft_pfw.o\
 	  ft_x_small.o ft_x_big.o ft_c_small.o ft_c_big.o\
 	  ft_itoa_base.o ft_isflag.o ft_is_sm.o ft_s_big_extra.o\
 	  ft_wstrjoin.o ft_lltoa_base.o ft_sultoa_base.o ft_uitoa_base.o\
-	  ft_luitoa_base.o ft_sttoa_base.o ft_imttoa_base.o\
+	  ft_luitoa_base.o ft_sttoa_base.o ft_imttoa_base.o ft_llltoa_base.o\
+	  ft_sitoa_base.o ft_ctoa_base.o\
 	  printf_info.o
 
 all: $(NAME)

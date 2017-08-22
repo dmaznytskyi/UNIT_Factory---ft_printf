@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 13:10:47 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/17 12:35:11 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/22 13:18:18 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i)
 {
 	s->f_start = *i;
-	while (!ft_cv(r[*i], s))
+	while (!ft_cv(r[*i], s) && r[*i] != '\0')
 		*i += 1;
 	s->f_end = *i;
 	*i += 1;
