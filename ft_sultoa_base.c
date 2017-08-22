@@ -6,13 +6,13 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 11:55:46 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/16 15:03:34 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:28:35 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	f(long value, int base, char *str, int *i)
+static void	f(unsigned long value, int base, char *str, int *i)
 {
 	char	*tmp;
 
