@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/22 17:21:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/23 20:41:56 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static char	*ft_casting(t_ftprintf *s)
 		return (ft_imttoa_base((intmax_t)s->arg, 10));
 	else if (s->sm == 3)
 		return (ft_llltoa_base((long long)s->arg, 10));
-	else if (s->sm == 4)
-		return (ft_lltoa_base((long)s->arg, 10));
 	else if (s->sm == 5)
 		return (ft_sitoa_base((short int)s->arg, 10));
 	else if (s->sm == 6)
@@ -48,17 +46,9 @@ static char	*ft_casting(t_ftprintf *s)
 
 static char	*ft_ret_prec(size_t prec, char *num)
 {
-	char	*tmp;
-
-	tmp = ft_strdup("");
 	if (prec > ft_strlen(num))
-	{
-		tmp = ft_strjoin(tmp, ft_add_cc(prec - ft_strlen(num), '0'));
-		tmp = ft_strjoin(tmp, num);
-	}
-	else
-		tmp = ft_strjoin(tmp, num);
-	return (tmp);
+		num = ft_strjoin(ft_add_cc(prec - ft_strlen(num), '0'), num);
+	return (num);
 }
 
 void		ft_d_small(t_ftprintf *s, size_t *col)
@@ -66,15 +56,31 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	char	*num;
 	char	*tmp;
 	char	c;
-	int		i;
 
-	i = 0;
+	if (s->ip)
+		s->flags[1] = 0;
+	if (s->flags[2])
+		s->flags[3] = 0;
+	if (s->sm == 4)
+	{
+		ft_d_big(s, col);
+		return ;
+	}
 	s->flags[1] ? (c = '0') : (c = ' ');
 	if (s->flags[1] && s->ip)
 		c = ' ';
 	tmp = ft_strdup("");
 	num = ft_casting(s);
-	num = ft_ret_prec(s->prec, num);
+	if (num[0] == '-')
+	{
+		ft_memmove(num, num + 1, ft_strlen(num));
+		num = ft_ret_prec(s->prec, num);
+		num = ft_strjoin("-", num);
+	}
+	else
+		num = ft_ret_prec(s->prec, num);
+	if (s->flags[2] && num[0] != '-' && !s->flags[1])
+		num = ft_strjoin("+", num);
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])

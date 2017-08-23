@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 16:39:16 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/17 11:35:31 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:32:55 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	printf_info(t_ftprintf *s)
 {
 	printf("\n-INFO START----------\n");
-	printf("arg of first %% [%s]\n", (char*)s->arg);
+//	printf("arg of first %% [%s]\n", (char*)s->arg);
 	printf("start of first %% format [%zu], end [%zu]\n", s->f_start, s->f_end);
 	printf("flags ['-' - %d, '0' - %d, '+' - %d, ' ' - %d, '#' - %d]\n",
 				s->flags[0], s->flags[1], s->flags[2],
