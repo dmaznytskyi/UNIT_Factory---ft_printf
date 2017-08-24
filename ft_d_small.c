@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/23 20:41:56 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/24 15:58:02 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	{
 		if (!s->flags[0])
 		{
-			tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num) - ft_strlen(tmp), c), tmp);
+			tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num), c), tmp);
 			tmp = ft_strjoin(tmp, num);
 		}
 		else
@@ -96,5 +96,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	}
 	else
 		tmp = ft_strjoin(tmp, num);
+	if (!s->ip && s->flags[2] && tmp[0] != '+')
+		tmp[0] = '+';
 	*col += ft_putstr(tmp);
 }
