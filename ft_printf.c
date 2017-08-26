@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/03 13:51:15 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/21 16:50:53 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:16:51 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			s = ft_ns(va_arg(p, void*));
+			if (format[i] == '\0')
+				return (count_letters++);
+			s = ft_ns();
 			ft_findallmodifiers(format, &s, &i);
+			if (!s.l)
+				s.arg = va_arg(p, void*);
 			ft_writeout(&s, &count_letters);
 		}
 		else

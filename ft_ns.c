@@ -6,13 +6,13 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 10:14:05 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/16 22:29:47 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:05:08 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_ftprintf	ft_ns(void *arg)
+t_ftprintf	ft_ns(void)
 {
 	t_ftprintf	new;
 	int			i;
@@ -27,7 +27,7 @@ t_ftprintf	ft_ns(void *arg)
 	new.prec = 0;
 	new.sm = 0;
 	new.cl = 0;
-	new.arg = arg;
+	new.arg = 0;
 	new.l = 0;
 	return (new);
 }

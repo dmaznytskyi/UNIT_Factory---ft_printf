@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/19 16:28:46 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/26 18:20:10 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ static char	*ft_add_cc(size_t num, char c)
 	return (tmp);
 }
 
-void	ft_u_big(t_ftprintf *s, size_t *col)
+void		ft_u_big(t_ftprintf *s, size_t *col)
 {
 	unsigned long	nu;
 	char			*num;
 	char			*tmp;
 	char			c;
 
-	s->flags[1] ? (c = '0') : (c = ' ');
+	s->flags[1] ? (c = '0') :
+		(c = ' ');
 	nu = (unsigned long)s->arg;
 	tmp = ft_strdup("");
 	num = ft_sultoa_base(nu, 10);

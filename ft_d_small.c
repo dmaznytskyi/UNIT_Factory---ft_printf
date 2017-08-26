@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/24 15:58:02 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:20:17 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	char	*num;
 	char	*tmp;
 	char	c;
+	int		or_num;
 
+	or_num = (int)s->arg;
 	if (s->ip)
 		s->flags[1] = 0;
 	if (s->flags[2])
@@ -79,7 +81,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	}
 	else
 		num = ft_ret_prec(s->prec, num);
-	if (s->flags[2] && num[0] != '-' && !s->flags[1])
+	if (s->flags[2] && num[0] != '-' && !s->flags[1] && or_num > 0)
 		num = ft_strjoin("+", num);
 	if (ft_strlen(num) < s->fw)
 	{
@@ -96,7 +98,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	}
 	else
 		tmp = ft_strjoin(tmp, num);
-	if (!s->ip && s->flags[2] && tmp[0] != '+')
+	if (!s->ip && s->flags[2] && tmp[0] != '+' && or_num > 0)
 		tmp[0] = '+';
 	*col += ft_putstr(tmp);
 }

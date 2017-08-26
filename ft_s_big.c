@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/15 12:37:19 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/26 18:25:54 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 	size_t			i;
 	size_t			len;
 	wchar_t			*st;
-	
+
 	st = (wchar_t *)s->arg;
 	i = 0;
 	len = 0;
@@ -91,8 +91,7 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 		while (st[i])
 			tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 0));
 	else if (s->flags[0])
-	{ 
-		//если есть флаг минус
+	{
 		if (s->prec > s->fw && s->fw > 0)
 			while (len < s->fw)
 				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
@@ -105,7 +104,6 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 			}
 			else if (s->fw)
 			{
-				//st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
 				len += ft_ustrlen(tmp);
 				while (len < s->prec)
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
@@ -131,7 +129,6 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 	}
 	else
 	{
-		//если флага минус нет
 		if (s->prec > s->fw && s->fw > 0)
 			while (len < s->fw)
 				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
