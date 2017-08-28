@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/26 16:20:17 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/28 16:15:19 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,20 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 		num = ft_strjoin("+", num);
 	if (ft_strlen(num) < s->fw)
 	{
-		if (!s->flags[0])
-		{
-			tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num), c), tmp);
-			tmp = ft_strjoin(tmp, num);
-		}
-		else
-		{
-			tmp = ft_strjoin(tmp, num);
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
-		}
+//		if (num[0] == '-')
+//		{
+//			ft_memmove(num, num + 1, ft_strlen(num));
+			if (!s->flags[0])
+			{
+				tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num), c), tmp);
+				tmp = ft_strjoin(tmp, num);
+			}
+			else
+			{
+				tmp = ft_strjoin(tmp, num);
+				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+			}
+//		}
 	}
 	else
 		tmp = ft_strjoin(tmp, num);
