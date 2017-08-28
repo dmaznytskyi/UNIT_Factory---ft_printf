@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 19:18:12 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/26 18:35:11 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/28 12:28:05 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	find_biggest(t_ftprintf *st, char *s)
 {
 	if (ft_strstr(s, "z"))
 		st->sm = 1;
-	if (ft_strstr(s, "j"))
+	if (ft_strstr(s, "j") && st->sm > 1)
 		st->sm = 2;
-	if (ft_strstr(s, "ll"))
+	if (ft_strstr(s, "ll") && st->sm > 2)
 		st->sm = 3;
-	if (ft_strstr(s, "l"))
+	if (ft_strstr(s, "l") && st->sm > 3)
 		st->sm = 4;
-	if (ft_strstr(s, "h"))
+	if (ft_strstr(s, "h") && st->sm > 4)
 		st->sm = 5;
-	if (ft_strstr(s, "hh"))
+	if (ft_strstr(s, "hh") && st->sm > 5)
 		st->sm = 6;
 }
 
