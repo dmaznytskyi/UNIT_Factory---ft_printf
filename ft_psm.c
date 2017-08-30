@@ -6,25 +6,33 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 19:18:12 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/28 17:20:51 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/30 15:17:31 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	find_biggest(t_ftprintf *st, char *s)
+void	find_biggest(t_ftprintf *st, char *s, char q, char w)
 {
+	size_t	cnt;
+	char	e;
+	char	r;
+	char	t;
+	char	y;
+
+	cnt = 0;
+	while ()
 	if (ft_strstr(s, "z"))
 		st->sm = 1;
-	if (ft_strstr(s, "j")/* && st->sm > 1*/)
+	if (ft_strstr(s, "j"))
 		st->sm = 2;
-	if (ft_strstr(s, "ll")/* && st->sm > 2*/)
+	if (ft_strstr(s, "ll"))
 		st->sm = 3;
-	if (ft_strstr(s, "l")/* && st->sm > 3*/)
+	if (ft_strstr(s, "l"))
 		st->sm = 4;
-	if (ft_strstr(s, "h")/* && st->sm > 4*/)
+	if (ft_strstr(s, "h"))
 		st->sm = 5;
-	if (ft_strstr(s, "hh")/* && st->sm > 5*/)
+	if (ft_strstr(s, "hh"))
 		st->sm = 6;
 }
 
@@ -66,3 +74,13 @@ void	ft_psm(t_ftprintf *s)
 		ft_count_sm(s, tmp);
 	}
 }
+
+/*
+** пояснение за sm:
+** z	-> 1
+** j	-> 2
+** ll	-> 3
+** l	-> 4
+** h	-> 5
+** hh	-> 6
+*/
