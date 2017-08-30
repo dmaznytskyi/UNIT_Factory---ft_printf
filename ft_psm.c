@@ -6,52 +6,32 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 19:18:12 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/30 15:17:31 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/30 17:00:27 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	find_biggest(t_ftprintf *st, char *s, char q, char w)
+void	find_biggest(t_ftprintf *st, char *s)
 {
 	size_t	cnt;
-	char	e;
-	char	r;
-	char	t;
-	char	y;
 
 	cnt = 0;
-	while ()
-	if (ft_strstr(s, "z"))
-		st->sm = 1;
-	if (ft_strstr(s, "j"))
-		st->sm = 2;
-	if (ft_strstr(s, "ll"))
-		st->sm = 3;
-	if (ft_strstr(s, "l"))
-		st->sm = 4;
-	if (ft_strstr(s, "h"))
-		st->sm = 5;
-	if (ft_strstr(s, "hh"))
-		st->sm = 6;
-}
-
-void	ft_count_sm(t_ftprintf *st, char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	while (s[cnt])
 	{
-		if (s[i] == 'h' && st->sm == 5)
-			st->sm = 6;
-		if (s[i] == 'l' && st->sm == 4)
+		if (s[cnt] == 'z')
+			st->sm = 1;
+		else if (s[cnt] == 'j' && (st->sm > 1 || !st->sm))
+			st->sm = 2;
+		else if (s[cnt] == 'l' && st->sm == 4)
 			st->sm = 3;
-		if (s[i] == 'h' && st->sm == 6)
-			st->sm = 5;
-		if (s[i] == 'l' && st->sm == 3)
+		else if (s[cnt] == 'l' && (st->sm >= 3 || !st->sm))
 			st->sm = 4;
-		i++;
+		else if (s[cnt] == 'h' && (st->sm > 5 || !st->sm))
+			st->sm = 5;
+		else if (s[cnt] == 'h' && st->sm == 5)
+			st->sm = 6;
+		cnt++;
 	}
 }
 
@@ -71,7 +51,6 @@ void	ft_psm(t_ftprintf *s)
 		if (s->output == '\0')
 			free(s->output);
 		find_biggest(s, tmp);
-		ft_count_sm(s, tmp);
 	}
 }
 
