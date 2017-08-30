@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/30 20:32:01 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/30 20:33:19 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	s->flags[1] ? (c = '0') : (c = ' ');
 	if (s->flags[1] && s->ip)
 		c = ' ';
-	(s->flags[3] && !s->flags[0] && !s->fw) ? (tmp = ft_strdup(" ")) : (tmp = ft_strdup(""));
+	(s->flags[3] && !s->flags[0] && s->fw <= s->prec) ? (tmp = ft_strdup(" ")) : (tmp = ft_strdup(""));
 	num = ft_casting(s);
 	if (num[0] == '-')
 	{
