@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:02 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/30 19:25:44 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/30 19:32:06 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	ft_u_small(t_ftprintf *s, size_t *col)
 	char			*tmp;
 	char			c;
 
+	if (s->sm == 4)
+	{
+		ft_u_big(s, col);
+		return ;
+	}
 	s->flags[1] ? (c = '0') : (c = ' ');
 	nu = (unsigned int)s->arg;
 	tmp = ft_strdup("");

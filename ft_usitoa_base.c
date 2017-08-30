@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 19:18:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/30 19:24:09 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/30 20:02:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	f(unsigned short int value, int base, char *str, int *i)
 {
 	char	*tmp;
 
-	tmp = "0123456789ABCDEF";
+	tmp = "0123456789abcdef";
 	if (value >= base)
 		f(value / base, base, str, i);
 	str[(*i)++] = tmp[(value % base)];
