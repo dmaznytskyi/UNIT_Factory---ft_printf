@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/26 18:25:54 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 15:56:32 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 	size_t			len;
 	wchar_t			*st;
 
+	if (!(char*)s->arg)
+		s->arg = (void*)ft_wstrdup(L"(null)");
 	st = (wchar_t *)s->arg;
 	i = 0;
 	len = 0;

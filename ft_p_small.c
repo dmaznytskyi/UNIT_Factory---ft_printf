@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:06:14 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/22 17:35:59 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 15:36:50 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*ft_ret_prec(t_ftprintf *s)
 	return (tmp);
 }
 
-void	ft_p_small(t_ftprintf *s, size_t *col)
+void		ft_p_small(t_ftprintf *s, size_t *col)
 {
 	char	*tmp;
 	char	*prec;

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:13:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/30 19:49:13 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 16:10:18 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 	s->flags[1] ? (c = '0') : (c = ' ');
 	nu = (unsigned int)s->arg;
 	tmp = ft_strdup("");
-	num = ft_casting(s);//ft_uitoa_base(nu, 8);
+	num = ft_casting(s);
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])
@@ -68,5 +68,7 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
 		}
 	}
+	else
+		tmp = ft_strjoin(tmp, num);
 	*col += ft_putstr(tmp);
 }
