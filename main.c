@@ -6,13 +6,14 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 16:08:34 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 19:37:06 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <wchar.h>
 #include <locale.h>
+#include <limits.h>
 
 int main()
 {
@@ -64,7 +65,9 @@ int main()
 //	i = ft_printf("|%20hd|\t|%20hhd|\t|%20d|\n", 4294967296,4294967296,4294967296);
 //	i = printf("%S\n", 0);
 //	i = ft_printf("%S\n", 0);
-	i = printf("%x\n", 42);
-	i = ft_printf("%x\n", 42);
+//	i = printf("%x\n", 42);
+//	i = ft_printf("%x\n", 42);
+	i = printf("%jX, %jX\n", 0, ULLONG_MAX);
+	i = ft_printf("%jX, %jX\n", 0, ULLONG_MAX);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 15:56:52 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 19:28:30 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ char			*ft_luitoa_base(unsigned int value, int base);
 char			*ft_lltoa_base(long value, int base);
 char			*ft_llltoa_base(long long value, int base);
 char			*ft_sttoa_base(size_t value, int base);
+char			*ft_lsttoa_base(size_t value, int base);
 char			*ft_imttoa_base(intmax_t value, int base);
-char			*ft_uimttoa_base(uintmax_t value, int base);
+char			*ft_suimttoa_base(uintmax_t value, int base);
+char			*ft_luimttoa_base(uintmax_t value, int base);
 char			*ft_sultoa_base(unsigned long value, int base);
 char			*ft_lultoa_base(unsigned long value, int base);
 char			*ft_sitoa_base(short int value, int base);

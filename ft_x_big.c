@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:56 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 17:20:21 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 19:28:53 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static char	*ft_add_cc(size_t num, char c)
 static char	*ft_casting(t_ftprintf *s)
 {
 	if (s->sm == 1)
-		return (ft_sttoa_base((size_t)s->arg, 16));
+		return (ft_lsttoa_base((size_t)s->arg, 16));
 	else if (s->sm == 2)
-		return (ft_uimttoa_base((uintmax_t)s->arg, 16));
+		return (ft_luimttoa_base((uintmax_t)s->arg, 16));
 	else if (s->sm == 3 || s->sm == 4)
 		return (ft_lultoa_base((unsigned long)s->arg, 16));
 	else if (s->sm == 5)

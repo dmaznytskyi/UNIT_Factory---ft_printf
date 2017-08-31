@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sttoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_lsttoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 18:11:34 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 18:11:48 by dmaznyts         ###   ########.fr       */
+/*   Created: 2017/08/31 19:28:00 by dmaznyts          #+#    #+#             */
+/*   Updated: 2017/08/31 19:29:35 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	f(size_t value, int base, char *str, int *i)
 {
 	char	*tmp;
 
-	tmp = "0123456789abcdef";
+	tmp = "0123456789ABCDEF";
 	if (value >= (size_t)base)
 		f(value / base, base, str, i);
 	str[(*i)++] = tmp[(value % base)];
 }
 
-char		*ft_sttoa_base(size_t value, int base)
+char		*ft_lsttoa_base(size_t value, int base)
 {
 	int		i;
 	char	*str;
