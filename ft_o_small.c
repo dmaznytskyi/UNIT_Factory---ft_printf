@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:13:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 16:30:52 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/08/31 17:15:26 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 	}
 	else
 		tmp = ft_strjoin(tmp, num);
-	s->flags[4] ? (tmp = ft_strjoin("0", tmp)) : 0;
+	(s->flags[4] && tmp[0]) ? (tmp = ft_strjoin("0", tmp)) : 0;
 	*col += ft_putstr(tmp);
 }
