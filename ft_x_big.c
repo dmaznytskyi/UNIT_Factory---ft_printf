@@ -6,12 +6,12 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:56 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 19:28:53 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 19:04:56 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 static char	*ft_add_cc(size_t num, char c)
 {
 	char	*tmp;
@@ -43,10 +43,10 @@ static char	*ft_casting(t_ftprintf *s)
 	else
 		return (ft_luitoa_base((unsigned int)s->arg, 16));
 }
-
+*/
 void	ft_x_big(t_ftprintf *s, size_t *col)
 {
-	unsigned int	nu;
+/*	unsigned int	nu;
 	char			*num;
 	char			*tmp;
 	char			c;
@@ -55,6 +55,8 @@ void	ft_x_big(t_ftprintf *s, size_t *col)
 	nu = (unsigned int)s->arg;
 	tmp = ft_strdup("");
 	num = ft_casting(s);//ft_luitoa_base(nu, 16);
+	if (s->prec > ft_strlen(num))
+		num = ft_strjoin(ft_add_cc(s->prec - ft_strlen(num), '0'), num);
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])
@@ -71,5 +73,8 @@ void	ft_x_big(t_ftprintf *s, size_t *col)
 	else
 		tmp = ft_strjoin(tmp, num);
 	(s->flags[4] && nu != 0) ? (tmp = ft_strjoin("0X", tmp)) : 0;
-	*col += ft_putstr(tmp);
+	*col += ft_putstr(tmp);*/
+//	if (s->sm == 0)
+//		s->sm = 4;
+	ft_x_small(s, col);
 }

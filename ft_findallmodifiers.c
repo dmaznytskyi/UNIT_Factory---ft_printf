@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 13:10:47 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/26 18:18:26 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 18:11:43 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,8 @@ void	ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i)
 		if (!s->output[0])
 			break ;
 	}
+	if (s->ip && s->prec > s->fw && s->cl != 'c' && s->cl != 'C'
+			&& s->cl != 's' && s->cl != 'S')
+		s->fw = s->prec;
+//	printf_info(s);
 }

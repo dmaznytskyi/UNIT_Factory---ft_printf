@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:41 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 19:08:17 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 18:59:29 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ static char	*ft_casting(t_ftprintf *s)
 		return (ft_uitoa_base((unsigned int)s->arg, 16));
 }
 
+void	ft_ololo(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		s[i] = (char)ft_toupper((int)s[i]);
+		i++;
+	}
+}
+
 void	ft_x_small(t_ftprintf *s, size_t *col)
 {
 	unsigned int	nu;
@@ -51,25 +63,41 @@ void	ft_x_small(t_ftprintf *s, size_t *col)
 	char			*tmp;
 	char			c;
 
+	s->flags[0] ? (s->flags[1] = 0) : 0;
 	s->flags[1] ? (c = '0') : (c = ' ');
-	nu = (unsigned int)s->arg;
+	nu = (intmax_t)s->arg;
 	tmp = ft_strdup("");
-	num = ft_casting(s);//ft_uitoa_base(nu, 16);
+	num = ft_casting(s);
+	if (s->prec > ft_strlen(num))
+		num = ft_strjoin(ft_add_cc(s->prec - ft_strlen(num), '0'), num);
+	if (s->prec == 0 && num[0] == '0' && s->ip)
+		ft_bzero(num, ft_strlen(num));
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])
 		{
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+			(s->flags[4] && nu != 0) ? (tmp = ft_strjoin("0x", tmp)) : 0;
+			if (c == '0')
+				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num) -
+							ft_strlen(tmp), c));
+			else
+				tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num) -
+							ft_strlen(tmp), c), tmp); 
 			tmp = ft_strjoin(tmp, num);
 		}
 		else
 		{
+			(s->flags[4] && nu != 0) ? (num = ft_strjoin("0x", num)) : 0;
 			tmp = ft_strjoin(tmp, num);
 			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
 		}
 	}
 	else
+	{
+		(s->flags[4] && nu != 0) ? (tmp = ft_strjoin("0x", tmp)) : 0;
 		tmp = ft_strjoin(tmp, num);
-	(s->flags[4] && nu != 0) ? (tmp = ft_strjoin("0x", tmp)) : 0;
+	}
+	if (s->cl == 'X')
+		ft_ololo(tmp);
 	*col += ft_putstr(tmp);
 }

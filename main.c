@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 19:37:06 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 19:04:54 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,27 @@ int main()
 //	i = ft_printf("%S\n", 0);
 //	i = printf("%x\n", 42);
 //	i = ft_printf("%x\n", 42);
-	i = printf("%jX, %jX\n", 0, ULLONG_MAX);
-	i = ft_printf("%jX, %jX\n", 0, ULLONG_MAX);
+//	i = printf("%jX, %jX\n", 0, ULLONG_MAX);
+//	i = ft_printf("%jX, %jX\n", 0, ULLONG_MAX);
+	
+	
+	
+//	i = printf("{%-13p}\n", &strlen);
+//	i = ft_printf("{%-13p}\n", &strlen);
+
+//	i = printf("%lp", 42);
+//	i = ft_printf("%lp", 42);
+//	i = printf("%#.o %#.0o\n", 0, 0);
+//	i = ft_printf("%#.o %#.0o\n", 0, 0);
+//	i = printf("%#.o %#.0o\n", 9, 9);
+//	i = ft_printf("%#.o %#.0o\n", 9, 9);
+
+//	i = printf("%.4O\n", 42);
+//	i = ft_printf("%.4O\n", 42);
+//	i = printf("%#o\n", 42);
+//	i = ft_printf("%#o\n", 42);
+
+//	i = printf("%.d, %.0d\n", 0, 0);
+//	i = ft_printf("%.d, %.0d\n", 0, 0);
 	return (0);
 }

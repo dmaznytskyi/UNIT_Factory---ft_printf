@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:06:14 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 15:36:50 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 16:42:21 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void		ft_p_small(t_ftprintf *s, size_t *col)
 	if (s->flags[0])
 	{
 		tmp = ft_strjoin(tmp, prec);
-		tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(tmp), ' '));
+		if (s->fw >= ft_strlen(tmp))
+			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(tmp), ' '));
 	}
 	else
 	{

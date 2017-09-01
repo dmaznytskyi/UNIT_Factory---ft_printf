@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:13:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 18:15:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 18:51:06 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,45 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 	char			*tmp;
 	char			c;
 
+	s->flags[0] ? (s->flags[1] = 0) : 0;
 	s->flags[1] ? (c = '0') : (c = ' ');
-	nu = (unsigned int)s->arg;
+	nu = (intmax_t)s->arg;
 	tmp = ft_strdup("");
 	num = ft_casting(s);
+	if (s->prec > ft_strlen(num))
+		num = ft_strjoin(ft_add_cc(s->prec - ft_strlen(num), '0'), num);
+	if (s->prec == 0 && num[0] == '0' && s->ip)
+		ft_bzero(num, ft_strlen(num));
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])
 		{
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+			(s->flags[4]) ? (tmp = ft_strjoin("0", tmp)) : 0;
+			if (c == '0')
+				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num) -
+							ft_strlen(tmp), c));
+			else
+				tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num) -
+							ft_strlen(tmp), c), tmp);
 			tmp = ft_strjoin(tmp, num);
 		}
 		else
 		{
+			(s->flags[4]) ? (num = ft_strjoin("0", num)) : 0;
+			if (s->prec == s->fw)
+				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), '0'));
 			tmp = ft_strjoin(tmp, num);
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+			if (s->prec != s->fw)
+				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
 		}
 	}
 	else
+	{
+		if (s->flags[4] && s->ip)
+			tmp = ft_strjoin("0", tmp);
+		else if (nu != 0 && !s->ip && s->flags[4])
+			tmp = ft_strjoin("0", tmp);
 		tmp = ft_strjoin(tmp, num);
-	(s->flags[4] && nu != 0) ? (tmp = ft_strjoin("0", tmp)) : 0;
+	}
 	*col += ft_putstr(tmp);
 }
