@@ -6,12 +6,12 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:41 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/23 20:30:21 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 21:40:48 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 static char	*ft_add_cc(size_t num, char c)
 {
 	char	*tmp;
@@ -27,9 +27,13 @@ static char	*ft_add_cc(size_t num, char c)
 	tmp[i] = '\0';
 	return (tmp);
 }
-
+*/
 void	ft_d_big(t_ftprintf *s, size_t *col)
 {
+	if (s->sm == 0 || s->sm > 4)
+		s->sm = 3;
+	ft_d_small(s, col);
+	/*
 	long	nu;
 	char	*num;
 	char	*tmp;
@@ -59,5 +63,5 @@ void	ft_d_big(t_ftprintf *s, size_t *col)
 	}
 	else
 		tmp = num;
-	*col += ft_putstr(tmp);
+	*col += ft_putstr(tmp);*/
 }

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:02 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 18:16:06 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 23:25:26 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ft_add_cc(size_t num, char c)
 static char	*ft_casting(t_ftprintf *s)
 {
 	if (s->sm == 1)
-		return (ft_sttoa_base((size_t)s->arg, 10));
+		return (ft_sttoa_base((size_t)s->arg, 10, 0));
 	else if (s->sm == 2)
 		return (ft_suimttoa_base((uintmax_t)s->arg, 10));
 	else if (s->sm == 3 || s->sm == 4)
@@ -59,7 +59,11 @@ void	ft_u_small(t_ftprintf *s, size_t *col)
 	s->flags[1] ? (c = '0') : (c = ' ');
 	nu = (unsigned int)s->arg;
 	tmp = ft_strdup("");
-	num = ft_casting(s);//ft_uitoa_base(nu, 10);
+	num = ft_casting(s);
+	if (s->prec > ft_strlen(num))
+		num = ft_strjoin(ft_add_cc(s->prec - ft_strlen(num), '0'), num);
+	if (s->prec == 0 && num[0] == '0' && s->ip)
+		ft_bzero(num, ft_strlen(num));
 	if (ft_strlen(num) < s->fw)
 	{
 		if (!s->flags[0])

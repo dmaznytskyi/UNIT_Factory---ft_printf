@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 14:18:33 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/15 16:35:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/01 21:28:37 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char		*ft_lltoa_base(long value, int base)
 	char	*str;
 
 	i = 0;
-	if (base < 2 || base > 16 || !(str = (char*)malloc(64)))
+	if (base < 2 || base > 16 || !(str = (char*)malloc(sizeof(char) * 21)))
 		return (0);
 	if (base == 10 && value < 0)
 		str[i++] = '-';
