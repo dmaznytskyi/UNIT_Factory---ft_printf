@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/02 13:40:22 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 21:00:05 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,49 @@ int main()
 //	i = printf("{%05.s}\n", 0);
 //	i = ft_printf("{%05.s}\n", 0);
 
-	i = printf("%.4s\n", "42");
-	i = ft_printf("%.4s\n", "42");
+//	i = printf("%.4s\n", "42");
+//	i = ft_printf("%.4s\n", "42");
 
-	i = printf("%15.4s\n", "42");
-	i = ft_printf("%15.4s\n", "42");
+//	i = printf("%15.4s\n", "42");
+//	i = ft_printf("%15.4s\n", "42");
 
-	i = printf("[%4.s]\n", "42");
-	i = ft_printf("[%4.s]\n", "42");
+//	i = printf("[%4.s]\n", "42");
+//	i = ft_printf("[%4.s]\n", "42");
 
-	i = printf("%#.3o\n", 1);
-	i = ft_printf("%#.3o\n", 1);
+	printf("%%#.3o\n");
+	i = printf("or %#.3o\n", 1);
+	i = ft_printf("ft %#.3o\n", 1);
+
+//	i = printf("{%05.S}\n", L"42 c est cool");
+//	i = ft_printf("{%05.S}\n", L"42 c est cool");
+
+//	printf("[%%15.4S] _ 我是一只猫。\n");
+//	i = printf("[%15.4S]\n", L"我是一只猫。");
+//	i = ft_printf("[%15.4S]\n", L"我是一只猫。");
+
+//	printf("[%%4.15S] _ 我是一只猫。\n");
+//	i = printf("[%4.15S]\n", L"我是一只猫。");
+//	i = ft_printf("[%4.15S]\n", L"我是一只猫。");
+
+//	printf("[%%4.S] _ 我是一只猫。\n");
+//	i = printf("[%4.S]\n", L"我是一只猫。");
+//	i = ft_printf("[%4.S]\n", L"我是一只猫。");
+/*
+	i = printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+	i = ft_printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+	i = printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &i, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	i = ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &i, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+
+	printf("{%%30S}\n");	
+	i = printf("{%30S}", L"我是一只猫。");
+	printf("\t%d\n", i);
+	i = ft_printf("{%30S}", L"我是一只猫。");
+	printf("\t%d\n", i);
+	printf("{%%-30S}\n");
+	i = printf("{%-30S}", L"我是一只猫。");
+	printf("\t%d\n", i);
+	i = ft_printf("{%-30S}", L"我是一只猫。");
+	printf("\t%d\n", i);
+*/	
 	return (0);
 }

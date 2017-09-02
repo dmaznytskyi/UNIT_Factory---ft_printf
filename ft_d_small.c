@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:09:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 23:23:35 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 14:59:30 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void		ft_d_small(t_ftprintf *s, size_t *col)
 	}
 	else
 		tmp = ft_strjoin(tmp, num);
-	if (!s->ip && s->flags[2] && tmp[0] != '+' && or_num >= 0)
+	if (!s->ip && s->flags[2] && tmp[0] != '+' && or_num >= 0 && tmp[0] != ' ') /////
 		tmp[0] = '+';
 	if (s->flags[1] && s->flags[3] && tmp[0] == '0')
 		tmp[0] = ' ';

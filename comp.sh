@@ -6,7 +6,7 @@
 #    By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/17 15:02:22 by dmaznyts          #+#    #+#              #
-#    Updated: 2017/08/26 18:41:33 by dmaznyts         ###   ########.fr        #
+#    Updated: 2017/09/02 17:56:38 by dmaznyts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ do
 #	clang -g -Wall -Wextra -Werror -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal -I ./ -o printf_main2.o -c printf_main2.c
 #	clang -g -o ft_printf printf_main2.o -I ./ -L ./ -lftprintf
 #	echo "WARNING: no flags"
-	clang -g -Wall -Wextra -Werror -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal -I ./ -o main.o -c main.c
+	/usr/bin/gcc -g -Wall -Wextra -Werror -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal -I ./ -o main.o -c main.c
 #	clang -g -I ./ -o main.o -c main.c
-	clang -g -o ft_printf main.o -I ./ -L ./ -lftprintf
+	/usr/bin/gcc -g -o ft_printf main.o -I ./ -L ./ -lftprintf
 	/bin/rm -f main.o printf_main2.o
 	echo "\033[1;32mDONE\033[0m"
 	echo "\033[1mRunning ./ft_printf\n________________________________\033[0m

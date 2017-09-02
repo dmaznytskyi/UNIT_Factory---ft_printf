@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:13:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 23:25:04 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 21:01:06 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 	{
 		if (!s->flags[0])
 		{
-			(s->flags[4]) ? (tmp = ft_strjoin("0", tmp)) : 0;
+			(s->flags[4] && s->prec <= ft_strlen(num)) ? (num = ft_strjoin("0", num)) : 0;
 			if (c == '0')
 				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num) -
 							ft_strlen(tmp), c));
@@ -75,7 +75,7 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 		}
 		else
 		{
-			(s->flags[4]) ? (num = ft_strjoin("0", num)) : 0;
+			(s->flags[4] && s->prec <= ft_strlen(num)) ? (num = ft_strjoin("0", num)) : 0;
 			if (s->prec == s->fw)
 				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), '0'));
 			tmp = ft_strjoin(tmp, num);

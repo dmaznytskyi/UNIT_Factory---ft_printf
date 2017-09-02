@@ -6,13 +6,13 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 15:56:32 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 20:23:11 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned char	*ft_psp(size_t len)
+static unsigned char	*ft_psp(size_t len, unsigned char c)
 {
 	unsigned char	*ret;
 	size_t			i;
@@ -20,7 +20,7 @@ static unsigned char	*ft_psp(size_t len)
 	ret = (unsigned char*)malloc(sizeof(unsigned char) * len + 1);
 	i = -1;
 	while (++i < len)
-		ret[i] = ' ';
+		ret[i] = c;
 	ret[i] = '\0';
 	return (ret);
 }
@@ -78,6 +78,7 @@ static unsigned char	*ft_write(size_t v, size_t *len, size_t max)
 void					ft_s_big(t_ftprintf *s, size_t *col)
 {
 	unsigned char	*tmp;
+	unsigned char	*nor;
 	size_t			i;
 	size_t			len;
 	wchar_t			*st;
@@ -87,6 +88,8 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 	st = (wchar_t *)s->arg;
 	i = 0;
 	len = 0;
+	nor = (unsigned char*)malloc(sizeof(unsigned char) * 1);
+	nor[0] = 0;
 	tmp = (unsigned char*)malloc(sizeof(unsigned char) * 1);
 	tmp[0] = 0;
 	if (s->prec == 0 && s->fw == 0)
@@ -103,13 +106,14 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 			{
 				while (st[i])
 					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 2147483648));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - ft_ustrlen(tmp), ' '));
 			}
 			else if (s->fw)
 			{
 				len += ft_ustrlen(tmp);
 				while (len < s->prec)
-					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
-				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - ft_ustrlen(tmp)));
+					nor = ft_ustrjoin(nor, ft_write(st[i++], &len, s->prec));
+				tmp = ft_ustrjoin(nor, ft_psp(s->fw - ft_ustrlen(nor), ' '));
 			}
 			else if (s->fw < s->prec)
 			{
@@ -117,7 +121,7 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 					while (len < s->prec)
 						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 				else
-					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw, ' '));
 			}
 			else
 			{
@@ -125,29 +129,38 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 					while (len < s->prec)
 						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 				else
-					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw, ' '));
 			}
 		}
+	}
+	else if (s->ip && s->prec == 0)
+	{
+		if (s->flags[1])
+			tmp = ft_ustrjoin(tmp, ft_psp(s->fw, '0'));
+		else
+			tmp = ft_ustrjoin(tmp, ft_psp(s->fw, ' '));
 	}
 	else
 	{
 		if (s->prec > s->fw && s->fw > 0)
-			while (len < s->fw)
+			while (len < s->prec)
 				tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 		else
 		{
 			if (!s->prec)
 			{
 				while (st[i])
-					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, 2147483648));
+					nor = ft_ustrjoin(nor, ft_write(st[i++], &len, 2147483648));
+				tmp = ft_ustrjoin(ft_psp(s->fw - ft_ustrlen(nor), ' '), nor);
 			}
 			else if (s->fw)
 			{
-				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - s->prec));
-				st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec)));
+				while (len < s->prec)
+					nor = ft_ustrjoin(nor, ft_write(st[i++], &len, s->prec));
+				tmp = ft_ustrjoin(tmp, ft_psp(s->fw - ft_ustrlen(nor), ' '));
+				st[0] != 0 ? 0 : (tmp = ft_ustrjoin(tmp, ft_psp(s->prec, ' ')));
 				len += ft_ustrlen(tmp);
-				while (len < s->fw)
-					tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->fw));
+				tmp = ft_ustrjoin(tmp, nor);
 			}
 			else if (s->fw < s->prec)
 			{
@@ -155,7 +168,7 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 					while (len < s->prec)
 						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 				else
-					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw, ' '));
 			}
 			else
 			{
@@ -163,7 +176,7 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 					while (len < s->prec)
 						tmp = ft_ustrjoin(tmp, ft_write(st[i++], &len, s->prec));
 				else
-					tmp = ft_ustrjoin(tmp, ft_psp(s->fw));
+					tmp = ft_ustrjoin(tmp, ft_psp(s->fw, ' '));
 			}
 		}
 	}
