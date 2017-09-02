@@ -6,11 +6,21 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 20:52:07 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/28 17:55:24 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 13:47:56 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static size_t	ft_psp(char c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i++ < n)
+		write(1, &c, 1);
+	return (n);
+}
 
 static size_t	ret_prec(t_ftprintf *s)
 {
@@ -23,22 +33,14 @@ static size_t	ret_prec(t_ftprintf *s)
 	tmp = (char*)malloc(sizeof(char) * s->prec + 1);
 	tmp2 = (char*)s->arg;
 	s->prec > 0 ? (len = s->prec) : (len = ft_strlen(tmp2));
-	while (i < len)
+	if (s->prec == 0 && s->ip)
+		return (ft_psp(' ', s->fw - ft_strlen(tmp2)));
+	while (i < len && i < ft_strlen(tmp2))
 	{
-		tmp2[i] ? (tmp[i] = tmp2[i]) : (tmp[i] = ' ');
+		(tmp2[i] && ft_strlen(tmp2) > i) ? (tmp[i] = tmp2[i]) : (tmp[i] = ' ');
 		i++;
 	}
 	return (ft_putstr(tmp));
-}
-
-static size_t	ft_psp(char c, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i++ < n)
-		write(1, &c, 1);
-	return (n);
 }
 
 static void		emp_str(t_ftprintf *s, size_t *col)
@@ -60,11 +62,13 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 	i = 0;
 	tmp = ' ';
 	str = (char*)s->arg;
-	if (!ft_strlen(str))
+	if (!str || !ft_strlen(str))
 	{
 		emp_str(s, col);
 		return ;
 	}
+	if (ft_strlen(str) < s->prec)
+		s->prec = ft_strlen(str);
 	s->flags[1] ? tmp = '0' : 0;
 	if (!s->flags[0])
 	{
@@ -96,7 +100,7 @@ static void		ft_wsf(t_ftprintf *s, size_t *col)
 
 void		ft_s_small(t_ftprintf *s, size_t *col)
 {
-	if (!(char*)s->arg)
+	if (!(char*)s->arg && !s->flags[1])
 		s->arg = (void*)ft_strdup("(null)");
 	if (s->sm == 4)
 		ft_s_big(s, col);

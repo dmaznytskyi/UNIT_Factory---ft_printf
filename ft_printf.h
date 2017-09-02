@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 12:35:36 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 23:23:53 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 13:17:02 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void			ft_pprec(t_ftprintf *s);
 void			ft_psm(t_ftprintf *s);
 void			ft_findallmodifiers(const char *r, t_ftprintf *s, size_t *i);
 void			ft_writeout(t_ftprintf *s, size_t *col);
-size_t			ft_putanynbr(size_t num);
 size_t			ft_ustrlen(unsigned char *s);
 wchar_t			*ft_wstrdup(const wchar_t *s);
 t_ftprintf		ft_ns(void);

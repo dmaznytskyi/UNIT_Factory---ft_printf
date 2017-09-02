@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 23:09:45 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/02 13:40:22 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,25 @@ int main()
 //	i = printf("{% 03d}\n", 0);
 //	i = ft_printf("{% 03d}\n", 0);
 
-	i = printf("%zi\n", LLONG_MIN);
-	i = ft_printf("%zi\n", LLONG_MIN);
+//	i = printf("%zi\n", LLONG_MIN);
+//	i = ft_printf("%zi\n", LLONG_MIN);
 
 //	i = printf("{%+03d}\n", 123456);
 //	i = ft_printf("{%+03d}\n", 123456);
+
+//	i = printf("{%05.s}\n", 0);
+//	i = ft_printf("{%05.s}\n", 0);
+
+	i = printf("%.4s\n", "42");
+	i = ft_printf("%.4s\n", "42");
+
+	i = printf("%15.4s\n", "42");
+	i = ft_printf("%15.4s\n", "42");
+
+	i = printf("[%4.s]\n", "42");
+	i = ft_printf("[%4.s]\n", "42");
+
+	i = printf("%#.3o\n", 1);
+	i = ft_printf("%#.3o\n", 1);
 	return (0);
 }
