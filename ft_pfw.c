@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 17:15:45 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/23 14:08:51 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 16:59:56 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_pfw(t_ftprintf *s)
 	while (s->output[i] >= '0' && s->output[i] <= '9')
 		i++;
 	tmp = ft_strsub(s->output, 0, i);
-	s->output += (i/* += 1*/);
+	s->output += i;
 	ft_atoi(tmp) > 0 ? (s->fw = ft_atoi(tmp)) : 0;
-	s->f_start += (i/* += 1*/);
+	s->f_start += i;
 }

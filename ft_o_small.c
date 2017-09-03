@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:13:23 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/03 14:24:48 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 22:19:29 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,14 @@ static char	*ft_casting(t_ftprintf *s)
 		return (ft_uitoa_base((unsigned int)s->arg, 8));
 }
 
-void	ft_o_small(t_ftprintf *s, size_t *col)
+void		ft_o_small(t_ftprintf *s, size_t *col)
 {
 	unsigned int	nu;
 	char			*num;
 	char			*tmp;
 	char			c;
 
-	s->flags[0] ? (s->flags[1] = 0) : 0;
-	s->flags[1] ? (c = '0') : (c = ' ');
+	c = ft_o_fl(s);
 	nu = (intmax_t)s->arg;
 	tmp = ft_strdup("");
 	num = ft_casting(s);
@@ -61,28 +60,7 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 	if (s->prec == 0 && num[0] == '0' && s->ip)
 		ft_bzero(num, ft_strlen(num));
 	if (ft_strlen(num) < s->fw)
-	{
-		if (!s->flags[0])
-		{
-			(s->flags[4] && s->prec <= ft_strlen(num)) ? (num = ft_strjoin("0", num)) : 0;
-			if (c == '0')
-				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num) -
-							ft_strlen(tmp), c));
-			else
-				tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(num) -
-							ft_strlen(tmp), c), tmp);
-			tmp = ft_strjoin(tmp, num);
-		}
-		else
-		{
-			(s->flags[4] && s->prec <= ft_strlen(num)) ? (num = ft_strjoin("0", num)) : 0;
-			if (s->prec == s->fw)
-				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), '0'));
-			tmp = ft_strjoin(tmp, num);
-			if (s->prec != s->fw)
-				tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
-		}
-	}
+		tmp = ft_work(s, num, tmp, c);
 	else
 	{
 		if (s->flags[4] && s->ip)
@@ -91,7 +69,5 @@ void	ft_o_small(t_ftprintf *s, size_t *col)
 			tmp = ft_strjoin("0", tmp);
 		tmp = ft_strjoin(tmp, num);
 	}
-	if (s->flags[4] && s->fw < ft_strlen(tmp) && s->prec > 0)
-		ft_memmove(tmp, tmp + 1, ft_strlen(tmp));
 	*col += ft_putstr(tmp);
 }

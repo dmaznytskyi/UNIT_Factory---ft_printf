@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_u_big.c                                         :+:      :+:    :+:   */
+/*   ft_s_big_extra2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/14 21:15:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/03 18:02:44 by dmaznyts         ###   ########.fr       */
+/*   Created: 2017/09/03 22:20:29 by dmaznyts          #+#    #+#             */
+/*   Updated: 2017/09/03 22:29:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_u_big(t_ftprintf *s, size_t *col)
+unsigned char	*ft_so(size_t *len, size_t v)
 {
-	if (s->sm == 0 || s->sm > 4)
-		s->sm = 3;
-	ft_u_small(s, col);
+	*len += 1;
+	return (ft_one(v));
+}
+
+unsigned char	*ft_st(size_t *len, size_t v)
+{
+	*len += 2;
+	return (ft_two(v));
+}
+
+unsigned char	*ft_sh(size_t *len, size_t v)
+{
+	*len += 3;
+	return (ft_three(v));
+}
+
+unsigned char	*ft_sf(size_t *len, size_t v)
+{
+	*len += 4;
+	return (ft_four(v));
 }

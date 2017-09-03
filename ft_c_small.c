@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:16:20 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/07/23 15:39:27 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 20:50:34 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ static void	ft_wcf(t_ftprintf *s)
 	{
 		while (i < s->fw - 1)
 		{
-			s->flags[1] ? (tmp[i] = '0') :
-				(tmp[i] = ' ');
-			i++;
+			s->flags[1] ? (tmp[i++] = '0') :
+				(tmp[i++] = ' ');
 		}
-		s->l == 0 ? (tmp[i++] = (char)s->arg) : (tmp[i++] = s->l);
+		s->l == 0 ? (tmp[i++] = (char)s->arg)
+			: (tmp[i++] = s->l);
 	}
 	else
 	{
-		s->l == 0 ? (tmp[i] = (char)s->arg) : (tmp[i] = s->l);
+		s->l == 0 ? (tmp[i] = (char)s->arg)
+			: (tmp[i] = s->l);
 		i++;
 		while (i < s->fw)
 			tmp[i++] = ' ';

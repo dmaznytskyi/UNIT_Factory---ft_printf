@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/03 13:51:15 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/26 16:16:51 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 20:55:14 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+void	ft_out(size_t *i, size_t *cl, char c)
+{
+	write(1, &c, 1);
+	*i += 1;
+	*cl += 1;
+}
+
+int		ft_printf(const char *format, ...)
 {
 	va_list		p;
 	size_t		i;
@@ -40,11 +47,7 @@ int	ft_printf(const char *format, ...)
 			ft_writeout(&s, &count_letters);
 		}
 		else
-		{
-			write(1, &format[i], 1);
-			i++;
-			count_letters++;
-		}
+			ft_out(&i, &count_letters, format[i]);
 	}
 	return (count_letters);
 }

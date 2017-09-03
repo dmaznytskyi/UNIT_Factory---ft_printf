@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:15:02 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 23:25:26 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 21:04:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,30 @@ static char	*ft_casting(t_ftprintf *s)
 		return (ft_uitoa_base((unsigned int)s->arg, 10));
 }
 
-void	ft_u_small(t_ftprintf *s, size_t *col)
+static char	*ft_helper(t_ftprintf *s, char *tmp, char *num, char c)
+{
+	if (!s->flags[0])
+	{
+		tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+		tmp = ft_strjoin(tmp, num);
+	}
+	else
+	{
+		tmp = ft_strjoin(tmp, num);
+		tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
+	}
+	return (tmp);
+}
+
+void		ft_u_small(t_ftprintf *s, size_t *col)
 {
 	unsigned int	nu;
 	char			*num;
 	char			*tmp;
 	char			c;
 
-	if (s->sm == 4)
-	{
-		ft_u_big(s, col);
-		return ;
-	}
-	s->flags[1] ? (c = '0') : (c = ' ');
+	(s->flags[1] && !s->flags[0] && !s->ip) ? (c = '0')
+		: (c = ' ');
 	nu = (unsigned int)s->arg;
 	tmp = ft_strdup("");
 	num = ft_casting(s);
@@ -65,18 +76,7 @@ void	ft_u_small(t_ftprintf *s, size_t *col)
 	if (s->prec == 0 && num[0] == '0' && s->ip)
 		ft_bzero(num, ft_strlen(num));
 	if (ft_strlen(num) < s->fw)
-	{
-		if (!s->flags[0])
-		{
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
-			tmp = ft_strjoin(tmp, num);
-		}
-		else
-		{
-			tmp = ft_strjoin(tmp, num);
-			tmp = ft_strjoin(tmp, ft_add_cc(s->fw - ft_strlen(num), c));
-		}
-	}
+		tmp = ft_helper(s, tmp, num, c);
 	else
 		tmp = ft_strjoin(tmp, num);
 	*col += ft_putstr(tmp);

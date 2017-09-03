@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/03 14:58:54 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 22:41:52 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,13 +159,17 @@ int main()
 	printf("\t%d\n", i);
 */	
 
-	i = printf("{%030S}\n", L"我是一只猫。");
-	i = ft_printf("{%030S}\n\n", L"我是一只猫。");
+//	i = printf("{%030S}\n", L"我是一只猫。");
+//	i = ft_printf("{%030S}\n\n", L"我是一只猫。");
 /*
 	i = printf("\n{%5p}\n", 0);
 	i = ft_printf("{%5p}\n", 0);
 
 	i = printf("{%05p}\n", 0);
 	i = ft_printf("{%05p}\n", 0);
-*/	return (0);
+*/	
+	i = printf("|%7.3S|\n", L"");
+	i = ft_printf("|%7.3S|\n", L"");
+	
+	return (0);
 }
