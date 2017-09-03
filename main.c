@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 13:56:50 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/02 21:00:05 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 14:58:54 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ int main()
 //	i = printf("[%4.s]\n", "42");
 //	i = ft_printf("[%4.s]\n", "42");
 
-	printf("%%#.3o\n");
-	i = printf("or %#.3o\n", 1);
-	i = ft_printf("ft %#.3o\n", 1);
+//	printf("%%#.3o\n");
+//	i = printf("or %#.3o\n", 1);
+//	i = ft_printf("ft %#.3o\n", 1);
 
 //	i = printf("{%05.S}\n", L"42 c est cool");
 //	i = ft_printf("{%05.S}\n", L"42 c est cool");
@@ -158,5 +158,14 @@ int main()
 	i = ft_printf("{%-30S}", L"我是一只猫。");
 	printf("\t%d\n", i);
 */	
-	return (0);
+
+	i = printf("{%030S}\n", L"我是一只猫。");
+	i = ft_printf("{%030S}\n\n", L"我是一只猫。");
+/*
+	i = printf("\n{%5p}\n", 0);
+	i = ft_printf("{%5p}\n", 0);
+
+	i = printf("{%05p}\n", 0);
+	i = ft_printf("{%05p}\n", 0);
+*/	return (0);
 }

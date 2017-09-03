@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:01:28 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/02 20:23:11 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 15:14:14 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,9 @@ void					ft_s_big(t_ftprintf *s, size_t *col)
 			}
 		}
 	}
+	i = 0;
+	if (s->flags[1] && tmp[0] == ' ')
+		while (tmp[i] == ' ')
+			tmp[i++] = '0';
 	*col += ft_putustr(tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 21:06:14 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/09/01 16:42:21 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/03 14:58:42 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void		ft_p_small(t_ftprintf *s, size_t *col)
 {
 	char	*tmp;
 	char	*prec;
+	char	c;
 
+	s->flags[1] ? (c = '0') : (c = ' ');
 	prec = ft_ret_prec(s);
 	tmp = ft_strdup("");
 	if (s->flags[0])
@@ -66,10 +68,12 @@ void		ft_p_small(t_ftprintf *s, size_t *col)
 	}
 	else
 	{
-		if (s->fw > ft_strlen(prec))
-			tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(prec), ' '), prec);
+		if (s->fw > ft_strlen(prec) && !s->flags[1])
+			tmp = ft_strjoin(ft_add_cc(s->fw - ft_strlen(prec), c), prec);
 		else
 			tmp = prec;
+		if (!s->arg && c == '0' && s->fw > ft_strlen(prec) && s->flags[1])
+			tmp = ft_strjoin(prec, ft_add_cc(s->fw - ft_strlen(prec), c));
 	}
 	*col += ft_putstr(tmp);
 }
