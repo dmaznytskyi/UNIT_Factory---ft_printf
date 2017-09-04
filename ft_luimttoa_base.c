@@ -6,31 +6,45 @@
 /*   By: dmaznyts <dmaznyts@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 19:23:37 by dmaznyts          #+#    #+#             */
-/*   Updated: 2017/08/31 19:39:38 by dmaznyts         ###   ########.fr       */
+/*   Updated: 2017/09/04 14:55:19 by dmaznyts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	f(uintmax_t value, int base, char *str, int *i)
+static int	nl(uintmax_t value, int base)
 {
-	char	*tmp;
+	int	i;
 
-	tmp = "0123456789ABCDEF";
-	if (value >= (uintmax_t)base)
-		f(value / base, base, str, i);
-	str[(*i)++] = tmp[(value % base)];
+	i = 0;
+	while (value >= (uintmax_t)base)
+	{
+		i++;
+		value /= base;
+	}
+	i++;
+	return (i);
 }
 
 char		*ft_luimttoa_base(uintmax_t value, int base)
 {
+	char	*tmp;
 	int		i;
+	int		l;
 	char	*str;
 
+	tmp = "0123456789ABCDEF";
 	i = 0;
-	if (base < 2 || base > 16 || !(str = (char*)malloc(64)))
+	l = nl(value, base);
+	if (base < 2 || base > 16 || !(str = ft_strnew(l)))
 		return (0);
-	f(value, base, str, &i);
-	str[i] = '\0';
+	str[l] = '\0';
+	l--;
+	while (l >= i)
+	{
+		str[l] = tmp[(value % base)];
+		l--;
+		value /= base;
+	}
 	return (str);
 }
